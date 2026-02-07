@@ -1,0 +1,65 @@
+[
+  {
+    "session_id": 262,
+    "room_id": 8432038,
+    "start_time": "2026-02-07 18:07",
+    "end_time": "2026-02-08 00:07",
+    "duration": "6h00m",
+    "total_danmaku": 67739,
+    "wordcloud": true
+  },
+  {
+    "session_id": 235,
+    "room_id": 8432038,
+    "start_time": "2026-02-06 18:01",
+    "end_time": "2026-02-06 23:35",
+    "duration": "5h34m",
+    "total_danmaku": 102649,
+    "wordcloud": true
+  },
+  {
+    "session_id": 220,
+    "room_id": 8432038,
+    "start_time": "2026-02-05 18:04",
+    "end_time": "2026-02-06 00:57",
+    "duration": "6h52m",
+    "total_danmaku": 45054,
+    "wordcloud": true
+  },
+  {
+    "session_id": 205,
+    "room_id": 8432038,
+    "start_time": "2026-02-04 18:05",
+    "end_time": "2026-02-04 23:57",
+    "duration": "5h51m",
+    "total_danmaku": 72598,
+    "wordcloud": true
+  },
+  {
+    "session_id": 190,
+    "room_id": 8432038,
+    "start_time": "2026-02-03 18:52",
+    "end_time": "2026-02-04 00:01",
+    "duration": "5h08m",
+    "total_danmaku": 48004,
+    "wordcloud": true
+  },
+  {
+    "session_id": 180,
+    "room_id": 8432038,
+    "start_time": "2026-02-02 18:59",
+    "end_time": "2026-02-03 00:41",
+    "duration": "5h41m",
+    "total_danmaku": 49772,
+    "wordcloud": true
+  },
+  {
+    "session_id": 162,
+    "room_id": 8432038,
+    "start_time": "2026-02-01 18:02",
+    "end_time": "2026-02-02 00:02",
+    "duration": "5h59m",
+    "total_danmaku": 59584,
+    "wordcloud": true
+  }
+]

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弹幕词云 - 直播 #162 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #16213e;
+  border-bottom: 1px solid #0f3460;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 500px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>直播 #162 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-02-01 18:02</span>
+      <span>弹幕数: 59584</span>
+      <span>词条数: 200</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 6058], ["说不出话", 1767], ["抽亲亲食品325礼包啦！", 867], ["爆了", 701], ["?", 564], ["？？？", 531], ["懂你意思", 472], ["毁号了", 404], ["还真是", 399], ["艾斯比", 398], ["睡觉", 366], ["zawazawa", 342], ["军奴", 308], ["很遗憾", 265], ["不要不要", 247], ["挑战失败", 239], ["不对不对", 225], ["学", 225], ["我要验牌", 216], ["已下单", 198], ["小兔喝奶", 193], ["？？？？", 191], ["哈哈大笑", 180], ["没有", 178], ["已取餐", 166], ["好好好", 165], ["收", 156], ["对的对的", 148], ["区", 148], ["爆", 147], ["余额不足哦", 140], ["开门", 139], ["扫", 135], ["对了对了", 127], ["oi", 126], ["？？", 121], ["何意啊", 120], ["？？？？？", 120], ["已退款", 116], ["毁号", 115], ["喂喂喂", 112], ["-50", 103], ["开盘", 102], ["收到", 99], ["点亮", 97], ["可爱捏", 94], ["余额不足", 89], ["sofree", 78], ["gxyy", 74], ["吹哨", 73], ["有在哪", 71], ["你是那四个字吗", 69], ["我脸色不对了", 67], ["真没有", 66], ["20/20", 66], ["886886", 65], ["man", 64], ["cs", 62], ["这个好", 62], ["1", 61], ["羞死了", 60], ["何意味", 60], ["-30", 60], ["收！", 59], ["对了", 59], ["0", 59], ["不如狼小妹", 58], ["不可能", 58], ["开挂了", 58], ["？？？？？？", 58], ["不赖", 56], ["饿", 55], ["你是？", 53], ["我知道了", 50], ["脸色对了", 49], ["fw", 47], ["难道说", 47], ["狼小妹", 46], ["发狂了", 45], ["看看", 43], ["支支吾吾", 43], ["🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀", 42], ["确实", 42], ["脸色不对了", 42], ["内个", 42], ["不对", 42], ["黑幕", 42], ["可爱", 40], ["哈哈哈哈", 40], ["老霸道了", 40], ["不够若只", 39], ["高高在上", 38], ["牌有问题", 38], ["尿了", 38], ["那就是要", 38], ["大大方方看", 37], ["血狼？", 37], ["毁号来了", 37], ["你已急哭", 37], ["没有啊", 37], ["无敌了", 37], ["哈哈哈", 36], ["不公平", 36], ["开了", 35], ["???", 35], ["太变态了", 35], ["50王", 35], ["牌没有问题", 35], ["跳车了", 34], ["往外出往外出", 34], ["在哪", 33], ["看不到", 33], ["啊？", 33], ["我来我来", 33], ["积累", 33], ["不是啊", 32], ["不能", 32], ["超大杯", 32], ["111", 32], ["甜甜甜", 32], ["未下单，期待发货", 31], ["籽岷", 31], ["man！", 30], ["坠机了", 30], ["fifa", 30], ["没看到", 30], ["帅在哪", 30], ["积累！", 30], ["给我擦皮鞋", 30], ["553", 30], ["杀", 30], ["路边", 29], ["高", 29], ["快跑", 29], ["找不到", 29], ["+17", 28], ["？？？？？？？", 28], ["老爸到了", 27], ["+90", 27], ["别别别", 27], ["30=1", 27], ["好在哪", 27], ["哐哐哐", 27], ["赔率厨出击", 26], ["逆天", 26], ["666", 26], ["哦对了", 26], ["熄灭", 25], ["已举报", 25], ["+98", 25], ["886", 24], ["🚀🚀🚀", 24], ["我不玩了", 24], ["呃呃", 24], ["超燃毁号", 24], ["站起来蹬", 24], ["llppqhh", 24], ["军奴-1", 24], ["我顶死你", 23], ["4399", 23], ["没绷住", 23], ["小主播了", 23], ["难道不是吗", 22], ["独步天下", 22], ["？？？？？？？？", 22], ["不是吗", 22], ["可以和解吗", 21], ["已急哭", 21], ["黑大帅毁号了", 21], ["军奴sc", 21], ["你还我你还我", 21], ["一哥一哥", 21], ["鸡肋", 21], ["糯", 21], ["拿下", 21], ["你来你来", 21], ["不可能，绝对不可能", 20], ["什么意思", 20], ["开了？", 20], ["绝不认输", 20], ["永控了", 20], ["老资历", 20], ["？？？？？？？？？", 20], ["军哥脸色不对了", 20], ["兔泡泡", 20], ["大大方方毁号", 20], ["bgm对了", 20], ["🐷", 20], ["fifa了", 19], ["插u盘了", 19], ["欧在哪", 19], ["开盘开盘", 19], ["。", 19], ["吓哭了", 18], ["呼呼呼", 18], ["🚀🚀🚀🚀", 18], ["仅退款", 18], ["好结局", 18], ["我去不早说", 18], ["🚀", 18]];
+var canvas = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = canvas.offsetWidth;
+  var h = Math.max(window.innerHeight - canvas.offsetTop, 500);
+  canvas.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var scale = Math.min(w, h) / 8 / Math.sqrt(maxFreq);
+  WordCloud(canvas, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.sqrt(size) * scale, 12);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#0f3460','#533483','#e94560',
+        '#48c9b0','#f39c12','#e74c3c','#3498db','#2ecc71',
+        '#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#1a1a2e',
+    rotateRatio: 0.3,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
