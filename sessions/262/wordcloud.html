@@ -7,7 +7,7 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  background: #1a1a2e;
+  background: #2d2d2d;
   color: #e0e0e0;
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   min-height: 100vh;
@@ -16,8 +16,8 @@ body {
 }
 .header {
   padding: 16px 24px;
-  background: #16213e;
-  border-bottom: 1px solid #0f3460;
+  background: #252525;
+  border-bottom: 1px solid #444;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,24 +71,24 @@ function render() {
   var h = Math.max(window.innerHeight - canvas.offsetTop, 500);
   canvas.style.height = h + 'px';
   var maxFreq = wordData[0] ? wordData[0][1] : 1;
-  var scale = Math.min(w, h) / 8 / Math.sqrt(maxFreq);
+  // R wordcloud2 formula: size * 180 / maxFreq (size=6 matches R script)
+  var baseWeight = 6 * 180 / maxFreq;
+  // Scale proportionally to canvas size (R uses fixed 960px)
+  var weightFactor = baseWeight * (w / 960);
   WordCloud(canvas, {
     list: wordData,
-    weightFactor: function(size) {
-      return Math.max(Math.sqrt(size) * scale, 12);
-    },
+    weightFactor: weightFactor,
     fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
-    color: function() {
-      var colors = ['#e94560','#0f3460','#533483','#e94560',
-        '#48c9b0','#f39c12','#e74c3c','#3498db','#2ecc71',
-        '#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
-        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
-      return colors[Math.floor(Math.random() * colors.length)];
-    },
-    backgroundColor: '#1a1a2e',
-    rotateRatio: 0.3,
+    fontWeight: 'bold',
+    color: 'random-light',
+    backgroundColor: '#2d2d2d',
+    gridSize: 0,
+    minSize: 0,
+    rotateRatio: 0.4,
     minRotation: -Math.PI / 4,
     maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
     shuffle: true,
     drawOutOfBound: false,
     shrinkToFit: true
