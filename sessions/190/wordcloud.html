@@ -71,7 +71,7 @@ function render() {
   var h = Math.max(window.innerHeight - el.offsetTop, 600);
   el.style.height = h + 'px';
   var maxFreq = wordData[0] ? wordData[0][1] : 1;
-  var maxFontSize = Math.min(w, h) / 4;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
   WordCloud(el, {
     list: wordData,
     weightFactor: function(size) {
