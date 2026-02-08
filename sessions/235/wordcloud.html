@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>弹幕词云 - 直播 #235 | BWolf</title>
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看方舟前瞻直播 | BWolf</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -34,6 +35,16 @@ body {
   color: #8892b0;
 }
 .header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
 .back-link {
   color: #e94560;
   text-decoration: none;
@@ -45,21 +56,31 @@ body {
   width: 100%;
   min-height: 600px;
 }
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 60px;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
 <div class="header">
   <div>
-    <h1>直播 #235 弹幕词云</h1>
+    <h1>看方舟前瞻直播 弹幕词云</h1>
     <div class="meta">
       <span>2026-02-06 18:01</span>
       <span>弹幕数: 102649</span>
       <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
     </div>
   </div>
   <a class="back-link" href="../..">← 返回列表</a>
 </div>
 <div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="60"></div>
 <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
         integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
         crossorigin="anonymous"></script>

@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BWolf 弹幕词云</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<title>血狼破军直播词云 | BWolf</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -13,6 +14,17 @@ body {
   min-height: 100vh;
 }
 .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.header-row .logo {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
 h1 {
   font-size: 24px;
   font-weight: 700;
@@ -22,7 +34,6 @@ h1 {
 .subtitle {
   font-size: 14px;
   color: #8892b0;
-  margin-bottom: 32px;
 }
 .session-list { list-style: none; }
 .session-card {
@@ -52,6 +63,15 @@ h1 {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  align-items: center;
+}
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 .session-card .no-wc {
   font-size: 12px;
@@ -68,8 +88,13 @@ h1 {
 </head>
 <body>
 <div class="container">
-  <h1>BWolf 弹幕词云</h1>
-  <p class="subtitle">每场直播结束后自动生成的弹幕词云</p>
+  <div class="header-row">
+    <img src="assets/logo.svg" class="logo" alt="BWolf">
+    <div>
+      <h1>血狼破军直播词云</h1>
+      <p class="subtitle">每场直播结束后自动生成的弹幕词云</p>
+    </div>
+  </div>
   <ul class="session-list" id="sessions"></ul>
   <div class="empty" id="empty" style="display:none">暂无词云数据</div>
 </div>
@@ -92,7 +117,7 @@ fetch('manifest.json')
       }
       var title = document.createElement('div');
       title.className = 'title';
-      title.textContent = '直播 #' + s.session_id;
+      title.textContent = s.title || ('直播 #' + s.session_id);
       a.appendChild(title);
       var info = document.createElement('div');
       info.className = 'info';
@@ -105,6 +130,12 @@ fetch('manifest.json')
       info.appendChild(sp1);
       info.appendChild(sp2);
       info.appendChild(sp3);
+      if (s.area) {
+        var areaTag = document.createElement('span');
+        areaTag.className = 'area-tag';
+        areaTag.textContent = s.area;
+        info.appendChild(areaTag);
+      }
       a.appendChild(info);
       if (!s.wordcloud) {
         var nwc = document.createElement('div');
