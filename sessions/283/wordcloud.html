@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 干员列表闲聊 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>干员列表闲聊 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-02-08 18:06</span>
+      <span>弹幕数: 48790</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 6189], ["说不出话", 1622], ["甜甜甜", 853], ["?", 633], ["爆了", 548], ["还真是", 418], ["区", 351], ["艾斯比", 347], ["睡觉", 305], ["？？？", 287], ["好好好", 284], ["懂你意思", 245], ["cs", 202], ["不要不要", 196], ["可爱捏", 176], ["羞死了", 171], ["你是？", 171], ["癔症", 171], ["神人", 162], ["难道说", 143], ["哈哈哈哈", 135], ["军哥来了", 133], ["要来了", 126], ["爆", 125], ["886886", 123], ["学", 110], ["支支吾吾", 109], ["山崩了", 107], ["？？", 106], ["我已急哭", 98], ["神了", 92], ["扫", 91], ["老资历", 88], ["太变态了", 87], ["哈哈哈哈哈", 87], ["何意味", 84], ["很遗憾", 82], ["军哥", 82], ["兔头", 80], ["军哥神了", 71], ["哈哈哈", 68], ["何意啊", 66], ["？？？？", 65], ["吹哨", 63], ["小兔喝奶", 62], ["哈哈大笑", 61], ["你是那四个字吗", 61], ["丸辣", 61], ["又幻想了", 57], ["开一局", 57], ["天塌了", 56], ["哈哈哈哈哈哈", 55], ["man", 54], ["对", 54], ["无敌了", 54], ["本质女主", 52], ["明日方舟赚了", 51], ["口口", 50], ["色魔", 49], ["已取餐", 49], ["哦？", 48], ["886", 48], ["可爱", 46], ["狼小妹", 46], ["哈哈哈哈哈哈哈", 44], ["确实", 44], ["发狂了", 43], ["没有人类了", 43], ["气笑了", 42], ["会心一笑", 42], ["老霸道了", 41], ["吓哭了", 40], ["我不行了", 40], ["呼呼呼", 39], ["jjm", 39], ["哈哈哈哈哈哈哈哈哈", 38], ["fw", 38], ["名场面", 37], ["听见你说", 36], ["超大杯", 35], ["爆！", 35], ["本质军哥", 34], ["往外出往外出", 34], ["玉", 34], ["喂喂喂", 34], ["笑死我了", 33], ["全军出击", 33], ["好机会", 33], ["诶多", 33], ["man！", 33], ["狂野", 32], ["老妈到了", 32], ["色魔狼哥", 32], ["恩人", 31], ["往里进往里进", 31], ["扫完一", 31], ["女主来了", 31], ["不是哥们", 31], ["新干员追加", 31], ["往日种种", 31], ["zmd亏了", 31], ["有牛啊", 30], ["啊？", 30], ["不赖", 30], ["难说", 30], ["全对", 30], ["公式", 30], ["一休尼", 29], ["乐", 29], ["workwork", 29], ["色魔军哥", 29], ["旮旯给木", 29], ["气人角色", 28], ["难绷", 27], ["看什么", 27], ["完了", 26], ["不孝", 26], ["325", 26], ["大主播了", 26], ["嗜血观众", 26], ["口口牛逼", 26], ["你已急哭", 26], ["skip", 26], ["？？？？？", 25], ["呃呃", 25], ["哈哈哈哈哈哈哈哈", 25], ["尸体暖暖的", 25], ["对的对的", 25], ["魔丸", 24], ["压力", 24], ["饿", 24], ["血狼破军", 23], ["可是我觉得很神圣啊", 23], ["别带", 23], ["sofree", 22], ["问对人了", 22], ["严查", 22], ["kksk", 22], ["傲娇", 22], ["逗逗你呀", 22], ["指导厨", 22], ["完蛋了", 22], ["罗哥", 21], ["domo", 21], ["收到", 21], ["高高在上", 21], ["那就是要", 20], ["罗小妹", 20], ["毁号了", 20], ["男主来了", 20], ["龙哥", 20], ["应激了", 20], ["凿凿凿", 19], ["性转大师", 19], ["那就是要问", 19], ["好位置", 19], ["穴", 19], ["糯", 18], ["脸色对了", 18], ["我知道了", 18], ["老婆", 18], ["神回", 18], ["退守6000", 18], ["老爸到了", 18], ["可爱在哪", 18], ["oioi", 18], ["帅", 18], ["有牛", 18], ["基友线", 18], ["真女主", 18], ["吃醋了", 18], ["思路构建", 17], ["ciallo", 17], ["兔头大佬", 17], ["是人类吗", 17], ["lgg", 17], ["点名表扬", 17], ["是", 17], ["只会这个", 16], ["sakiko", 16], ["军哥到了", 16], ["急了", 16], ["压抑了", 16], ["天才", 16], ["本质南通", 16], ["何忆卫", 16], ["伟大", 16], ["完结撒花", 16], ["???", 16], ["好麻烦啊", 16], ["哈哈哈哈哈哈哈哈哈哈", 15], ["你甘心吗", 15], ["男主", 15], ["女主", 15], ["暴力花生", 15], ["血狼老师", 15], ["本质傲娇", 15], ["mujica", 14], ["完美之罗", 14], ["你是", 14]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
