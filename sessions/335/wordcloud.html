@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看新干员强度 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>看看新干员强度 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-02-11 18:54</span>
+      <span>弹幕数: 32790</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 2036], ["说不出话", 1028], ["爆了", 437], ["艾斯比", 352], ["懂你意思", 340], ["睡觉", 339], ["还真是", 287], ["区", 185], ["?", 175], ["很遗憾", 135], ["爆", 119], ["坏结局", 117], ["对的对的", 114], ["？？？", 112], ["小兔喝奶", 112], ["学", 111], ["你是主播", 104], ["886886", 104], ["哈哈大笑", 99], ["-30", 99], ["主角呢", 98], ["你甘心吗", 90], ["难说", 89], ["羞死了", 81], ["喂喂喂", 79], ["开门", 76], ["i4b", 76], ["吸吸吸", 73], ["癔症", 71], ["杀", 67], ["甜甜甜", 67], ["030", 65], ["对了对了", 64], ["军奴", 64], ["-430", 60], ["收到", 56], ["好结局", 52], ["不对不对", 47], ["罗哥神了", 47], ["？？", 46], ["何意啊", 44], ["军奴sc", 43], ["主角在哪", 42], ["我的我的", 42], ["zmd赚了", 41], ["何意味", 41], ["往外出往外出", 41], ["886", 40], ["zawazawa", 40], ["口口", 39], ["好好好", 36], ["smbdj", 36], ["善意引导", 35], ["oi", 34], ["不是啊", 33], ["可惜", 33], ["icebee", 32], ["饿", 31], ["？？？？", 30], ["别带", 30], ["藏好了", 29], ["不要不要", 28], ["支支吾吾", 28], ["吓哭了", 28], ["确实", 28], ["fw", 28], ["我看未必", 27], ["1", 27], ["温馨提示：当前直播间为录播，内容同样精彩哦～", 27], ["吹哨", 27], ["扫", 27], ["哈哈哈", 26], ["希望", 26], ["退了go", 26], ["你是？", 26], ["往外出", 25], ["终末地赚了", 25], ["退守7999", 25], ["运", 25], ["不然呢", 25], ["k", 25], ["哈哈哈哈", 25], ["难道说", 24], ["主角在哪发财呢", 23], ["超大杯", 22], ["我知道了", 21], ["罗哥活了", 21], ["老实在哪", 21], ["全对", 20], ["明日方舟在哪发财", 20], ["gxyy", 20], ["口", 20], ["晚上好", 19], ["提丰", 19], ["只会这个", 19], ["绝不认输", 19], ["自己退", 19], ["望黑", 18], ["哈哈哈哈哈哈", 18], ["罗哥", 18], ["+7", 18], ["主角在干嘛", 18], ["祥子跟火陈哪个强", 18], ["玄莱万汀来全杀了😡", 18], ["已取餐", 17], ["大大方方拿", 17], ["对了", 17], ["蓟县", 17], ["hide", 17], ["小医仙", 16], ["你来你来", 16], ["哈哈", 16], ["大大方方", 16], ["军哥在哪发财", 16], ["老资历", 16], ["-60", 16], ["一滴泪", 16], ["偷玩不播？", 16], ["神了", 16], ["黑子服没服", 15], ["塞北的雪", 15], ["退了石头门", 15], ["狼总", 15], ["我顶死你", 15], ["大老板了", 15], ["毁号了", 15], ["糯", 15], ["黑子说话", 14], ["🧊🐝", 14], ["全军出击", 14], ["dnys", 14], ["mua", 14], ["主角呢？", 14], ["杀杀杀", 14], ["随便打", 14], ["非酋花宝宝", 14], ["💺🐇🖥：直播真好做…", 14], ["无敌了", 13], ["退了邦", 13], ["大大方方盗播", 13], ["黑子服了", 13], ["黑子服不服", 13], ["战斗", 13], ["直播真好做啊", 13], ["拿", 13], ["不是在哪", 13], ["老神", 13], ["刀神神了", 13], ["主角在哪发财", 13], ["我依然是世一藏", 13], ["主角是谁", 13], ["希望来", 13], ["当前直播间为录播，内容同样精彩哦", 13], ["杀了", 13], ["陈黑", 13], ["黑子伏了", 13], ["-1", 12], ["退了光谱", 12], ["发狂了", 12], ["装模作样", 12], ["五子不行", 12], ["舒服了", 12], ["bgm对了", 12], ["单干了", 12], ["逻各斯了", 12], ["你是那四个字吗", 12], ["玩对了", 12], ["狼小妹", 12], ["你的你的", 12], ["325", 12], ["反攻7999", 11], ["公式", 11], ["玩的不对", 11], ["寄", 11], ["大大方方口", 11], ["哈哈哈哈哈", 11], ["我啃", 11], ["不赖", 11], ["退了mygo", 11], ["赚了", 11], ["大大方方歪", 11], ["软柿子", 11], ["会", 11], ["老神神了", 10], ["乐", 10], ["冰！", 10], ["？？？？？", 10], ["开了", 10], ["算你过了", 10], ["哈哈哈哈哈哈哈", 10], ["再见了", 10], ["感谢维维罗罗合约冠军送上的飞机✈️✈️✈️✈️", 10], ["我累死你", 10], ["烂尾", 10], ["黑子伏不伏", 10], ["好似", 10], ["带派", 10], ["可爱捏", 10], ["绝不认输！", 10], ["熊神神了", 10]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
