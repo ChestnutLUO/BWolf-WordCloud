@@ -13,7 +13,7 @@
   {
     "session_id": 324,
     "room_id": 8432038,
-    "title": "看看新干员强度",
+    "title": "看看新干员强度 / 四大恶贼聊新干员强度",
     "area": "手游-明日方舟",
     "start_time": "2026-02-10 20:01",
     "end_time": "2026-02-10 23:41",
@@ -35,7 +35,7 @@
   {
     "session_id": 283,
     "room_id": 8432038,
-    "title": "干员列表闲聊",
+    "title": "干员列表闲聊 / 动画片时间到！",
     "area": "手游-明日方舟",
     "start_time": "2026-02-08 18:06",
     "end_time": "2026-02-08 23:29",
@@ -46,7 +46,7 @@
   {
     "session_id": 262,
     "room_id": 8432038,
-    "title": "终末地新角色抽卡",
+    "title": "终末地新角色抽卡 / 明日方舟新春会",
     "area": "手游-明日方舟：终末地",
     "start_time": "2026-02-07 18:07",
     "end_time": "2026-02-08 00:07",
@@ -68,7 +68,7 @@
   {
     "session_id": 220,
     "room_id": 8432038,
-    "title": "终末地送六星自选了！",
+    "title": "终末地送六星自选了！ / 和罗小狗雪小妹斗地主",
     "area": "手游-明日方舟",
     "start_time": "2026-02-05 18:04",
     "end_time": "2026-02-06 00:57",
@@ -85,39 +85,6 @@
     "end_time": "2026-02-04 23:57",
     "duration": "5h51m",
     "total_danmaku": 72598,
-    "wordcloud": true
-  },
-  {
-    "session_id": 190,
-    "room_id": 8432038,
-    "title": "干员列表环节",
-    "area": "手游-明日方舟",
-    "start_time": "2026-02-03 18:52",
-    "end_time": "2026-02-04 00:01",
-    "duration": "5h08m",
-    "total_danmaku": 48004,
-    "wordcloud": true
-  },
-  {
-    "session_id": 180,
-    "room_id": 8432038,
-    "title": "干员列表环节",
-    "area": "手游-明日方舟",
-    "start_time": "2026-02-02 18:59",
-    "end_time": "2026-02-03 00:41",
-    "duration": "5h41m",
-    "total_danmaku": 49772,
-    "wordcloud": true
-  },
-  {
-    "session_id": 162,
-    "room_id": 8432038,
-    "title": "干员列表环节",
-    "area": "手游-明日方舟",
-    "start_time": "2026-02-01 18:02",
-    "end_time": "2026-02-02 00:02",
-    "duration": "5h59m",
-    "total_danmaku": 59584,
     "wordcloud": true
   }
 ]
