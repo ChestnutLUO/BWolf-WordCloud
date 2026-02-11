@@ -6,14 +6,27 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <title>血狼破军直播词云 | BWolf</title>
 <style>
+/* 基础重置与变量 */
+:root {
+  --bg-color: #1a1a2e;
+  --card-bg: #16213e;
+  --border-color: #0f3460;
+  --accent-color: #e94560;
+  --text-main: #e0e0e0;
+  --text-sub: #8892b0;
+  --tag-bg: #0f3460;
+  --tag-text: #48c9b0;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  background: #1a1a2e;
-  color: #e0e0e0;
+  background: var(--bg-color);
+  color: var(--text-main);
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   min-height: 100vh;
 }
 .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+/* 头部样式 */
 .header-row {
   display: flex;
   align-items: center;
@@ -28,38 +41,50 @@ body {
 h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #e94560;
+  color: var(--accent-color);
   margin-bottom: 8px;
 }
 .subtitle {
   font-size: 14px;
-  color: #8892b0;
+  color: var(--text-sub);
 }
+
+/* 列表与卡片样式 */
 .session-list { list-style: none; }
 .session-card {
   display: block;
-  background: #16213e;
-  border: 1px solid #0f3460;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px 20px;
   margin-bottom: 12px;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s, transform 0.1s;
+  transition: border-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  outline: none;
 }
 .session-card:hover {
-  border-color: #e94560;
+  border-color: var(--accent-color);
   transform: translateX(4px);
+}
+.session-card:focus-visible {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+}
+.session-card[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
 }
 .session-card .title {
   font-size: 16px;
   font-weight: 600;
-  color: #e0e0e0;
+  color: var(--text-main);
   margin-bottom: 6px;
 }
 .session-card .info {
   font-size: 13px;
-  color: #8892b0;
+  color: var(--text-sub);
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -67,8 +92,8 @@ h1 {
 }
 .area-tag {
   display: inline-block;
-  background: #0f3460;
-  color: #48c9b0;
+  background: var(--tag-bg);
+  color: var(--tag-text);
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 4px;
@@ -77,82 +102,328 @@ h1 {
   font-size: 12px;
   color: #666;
   font-style: italic;
+  margin-top: 4px;
 }
-.empty {
+
+/* 状态提示 */
+.status-msg {
   text-align: center;
-  color: #8892b0;
+  color: var(--text-sub);
   padding: 60px 0;
   font-size: 16px;
+}
+.loading-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(233, 69, 96, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 筛选栏样式 */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-box {
+  flex: 1;
+  min-width: 200px;
+}
+input, select {
+  font-family: inherit;
+}
+#search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+#search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+#month-select {
+  padding: 10px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: pointer;
+}
+.clear-btn {
+  padding: 10px 16px;
+  background: var(--border-color);
+  border: none;
+  border-radius: 6px;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.clear-btn:hover {
+  background: #1a4d7a;
+}
+.results-info {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 12px;
+  min-height: 20px;
+}
+
+@media (max-width: 600px) {
+  .filter-bar { flex-direction: column; align-items: stretch; }
+  .search-box, #month-select, .clear-btn { width: 100%; }
 }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header-row">
-    <a href="https://bwolf.work">
-      <img src="assets/logo.svg" class="logo" alt="BWolf">
+    <a href="https://bwolf.work" aria-label="返回 BWolf 主页">
+      <img src="assets/logo.svg" class="logo" alt="BWolf Logo">
     </a>
     <div>
       <h1>血狼破军直播词云</h1>
       <p class="subtitle">每场直播结束后自动生成的弹幕词云</p>
     </div>
   </div>
+
+  <div class="filter-bar">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="🔍 搜索标题、分区或ID..." aria-label="搜索直播">
+    </div>
+    <div class="date-filter">
+      <select id="month-select" aria-label="按月份筛选">
+        <option value="">全部月份</option>
+      </select>
+    </div>
+    <button id="clear-filters" class="clear-btn" hidden>× 清除筛选</button>
+  </div>
+
+  <div class="results-info" id="results-info" aria-live="polite"></div>
+
+  <div id="loading" class="status-msg">
+    <div class="loading-spinner"></div>
+    <div>正在加载直播数据...</div>
+  </div>
+
+  <div id="error-msg" class="status-msg" hidden>数据加载失败，请刷新重试</div>
+  <div id="empty-msg" class="status-msg" hidden>暂无词云数据</div>
+  <div id="no-results-msg" class="status-msg" hidden>未找到匹配的直播</div>
+
   <ul class="session-list" id="sessions"></ul>
-  <div class="empty" id="empty" style="display:none">暂无词云数据</div>
 </div>
+
 <script>
-fetch('manifest.json')
-  .then(function(r) { return r.json(); })
-  .then(function(sessions) {
-    var list = document.getElementById('sessions');
-    var empty = document.getElementById('empty');
-    if (!sessions.length) { empty.style.display = ''; return; }
-    sessions.forEach(function(s) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.className = 'session-card';
-      if (s.wordcloud) {
-        a.href = 'sessions/' + s.session_id + '/wordcloud.html';
-      } else {
-        a.style.opacity = '0.5';
-        a.style.cursor = 'default';
+(function() {
+  let allSessions = [];
+  let filteredSessions = [];
+  let searchQuery = '';
+  let selectedMonth = '';
+
+  const els = {
+    list: document.getElementById('sessions'),
+    searchInput: document.getElementById('search-input'),
+    monthSelect: document.getElementById('month-select'),
+    clearBtn: document.getElementById('clear-filters'),
+    resultsInfo: document.getElementById('results-info'),
+    loading: document.getElementById('loading'),
+    errorMsg: document.getElementById('error-msg'),
+    emptyMsg: document.getElementById('empty-msg'),
+    noResultsMsg: document.getElementById('no-results-msg')
+  };
+
+  function populateMonthDropdown(sessions) {
+    const months = new Set();
+    sessions.forEach(s => {
+      if (s.start_time && s.start_time.length >= 7) {
+        months.add(s.start_time.substring(0, 7));
       }
-      var title = document.createElement('div');
+    });
+
+    const sortedMonths = Array.from(months).sort().reverse();
+    const fragment = document.createDocumentFragment();
+
+    sortedMonths.forEach(m => {
+      const option = document.createElement('option');
+      option.value = m;
+      const [year, month] = m.split('-');
+      option.textContent = `${year}年${parseInt(month, 10)}月`;
+      fragment.appendChild(option);
+    });
+
+    els.monthSelect.appendChild(fragment);
+  }
+
+  function attachFilterListeners() {
+    let searchTimeout;
+    els.searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        applyFilters();
+      }, 300);
+    });
+
+    els.monthSelect.addEventListener('change', (e) => {
+      selectedMonth = e.target.value;
+      applyFilters();
+    });
+
+    els.clearBtn.addEventListener('click', () => {
+      els.searchInput.value = '';
+      els.monthSelect.value = '';
+      searchQuery = '';
+      selectedMonth = '';
+      applyFilters();
+      els.searchInput.focus();
+    });
+  }
+
+  function applyFilters() {
+    filteredSessions = allSessions.filter(s => {
+      if (searchQuery) {
+        const title = (s.title || '').toLowerCase();
+        const area = (s.area || '').toLowerCase();
+        const id = String(s.session_id);
+
+        if (!title.includes(searchQuery) &&
+            !area.includes(searchQuery) &&
+            !id.includes(searchQuery)) {
+          return false;
+        }
+      }
+
+      if (selectedMonth) {
+        if (!s.start_time.startsWith(selectedMonth)) return false;
+      }
+
+      return true;
+    });
+
+    renderSessions(filteredSessions);
+    updateUIState();
+  }
+
+  function renderSessions(sessions) {
+    els.list.innerHTML = '';
+
+    if (!sessions.length) return;
+
+    const fragment = document.createDocumentFragment();
+
+    sessions.forEach(s => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.className = 'session-card';
+
+      if (s.wordcloud) {
+        a.href = `sessions/${s.session_id}/wordcloud.html`;
+      } else {
+        a.removeAttribute('href');
+        a.setAttribute('aria-disabled', 'true');
+        a.tabIndex = -1;
+      }
+
+      const title = document.createElement('div');
       title.className = 'title';
-      title.textContent = s.title || ('直播 #' + s.session_id);
+      title.textContent = s.title || `直播 #${s.session_id}`;
       a.appendChild(title);
-      var info = document.createElement('div');
+
+      const info = document.createElement('div');
       info.className = 'info';
-      var sp1 = document.createElement('span');
-      sp1.textContent = s.start_time;
-      var sp2 = document.createElement('span');
-      sp2.textContent = '时长: ' + s.duration;
-      var sp3 = document.createElement('span');
-      sp3.textContent = '弹幕: ' + s.total_danmaku;
-      info.appendChild(sp1);
-      info.appendChild(sp2);
-      info.appendChild(sp3);
+
+      const createSpan = (text) => {
+        const span = document.createElement('span');
+        span.textContent = text;
+        return span;
+      };
+
+      info.appendChild(createSpan(s.start_time));
+      info.appendChild(createSpan(`时长: ${s.duration}`));
+      info.appendChild(createSpan(`弹幕: ${s.total_danmaku}`));
+
       if (s.area) {
-        var areaTag = document.createElement('span');
+        const areaTag = document.createElement('span');
         areaTag.className = 'area-tag';
         areaTag.textContent = s.area;
         info.appendChild(areaTag);
       }
+
       a.appendChild(info);
+
       if (!s.wordcloud) {
-        var nwc = document.createElement('div');
+        const nwc = document.createElement('div');
         nwc.className = 'no-wc';
         nwc.textContent = '弹幕数不足，未生成词云';
         a.appendChild(nwc);
       }
+
       li.appendChild(a);
-      list.appendChild(li);
+      fragment.appendChild(li);
     });
-  })
-  .catch(function() {
-    document.getElementById('empty').style.display = '';
-    document.getElementById('empty').textContent = '加载失败';
-  });
+
+    els.list.appendChild(fragment);
+  }
+
+  function updateUIState() {
+    const hasFilters = searchQuery || selectedMonth;
+    const hasResults = filteredSessions.length > 0;
+    const hasData = allSessions.length > 0;
+
+    if (hasFilters) {
+      els.resultsInfo.textContent = `显示 ${filteredSessions.length} / ${allSessions.length} 场直播`;
+      els.resultsInfo.style.display = '';
+      els.clearBtn.hidden = false;
+    } else {
+      els.resultsInfo.style.display = 'none';
+      els.clearBtn.hidden = true;
+    }
+
+    els.noResultsMsg.hidden = !hasFilters || hasResults;
+    els.emptyMsg.hidden = hasData;
+    els.list.hidden = !hasResults;
+  }
+
+  fetch('manifest.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response was not ok');
+      return r.json();
+    })
+    .then(sessions => {
+      els.loading.hidden = true;
+      if (!sessions || sessions.length === 0) {
+        els.emptyMsg.hidden = false;
+        return;
+      }
+
+      allSessions = sessions;
+      filteredSessions = sessions;
+
+      populateMonthDropdown(sessions);
+      attachFilterListeners();
+      renderSessions(sessions);
+      updateUIState();
+    })
+    .catch(err => {
+      console.error('Failed to load sessions:', err);
+      els.loading.hidden = true;
+      els.errorMsg.hidden = false;
+    });
+
+})();
 </script>
 </body>
 </html>
