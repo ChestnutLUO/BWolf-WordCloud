@@ -1,5 +1,16 @@
 [
   {
+    "session_id": 389,
+    "room_id": 8432038,
+    "title": "prts列表闲聊",
+    "area": "手游-明日方舟",
+    "start_time": "2026-02-15 19:10",
+    "end_time": "2026-02-15 23:40",
+    "duration": "4h29m",
+    "total_danmaku": 49542,
+    "wordcloud": true
+  },
+  {
     "session_id": 350,
     "room_id": 8432038,
     "title": "六点连麦看动画 / 冠军厨联动",
