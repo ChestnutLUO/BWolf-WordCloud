@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看舟戍杯 / 铃兰倒转 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看舟戍杯 / 铃兰倒转 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-03-29 18:51</span>
+      <span>弹幕数: 36334</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟：终末地</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 2071], ["说不出话", 633], ["区", 302], ["懂你意思", 172], ["?", 169], ["爆了", 166], ["好结局", 144], ["睡觉", 143], ["🐰", 130], ["坏结局", 126], ["甜甜甜", 114], ["军奴", 113], ["？？？", 90], ["🐰: 你们发的我只是念不了，而不是做不到", 88], ["为什么", 80], ["不是啊", 79], ["恩人", 76], ["🐰：（🎈什么B理解）。。。", 73], ["很遗憾", 69], ["哈哈大笑", 67], ["🐰：孕", 67], ["学", 66], ["大大方方退", 62], ["🐇", 62], ["还真是", 61], ["小兔喝奶", 61], ["🐰🐰🐰", 59], ["收到", 56], ["扫", 55], ["毒规则", 55], ["尬", 55], ["🐰：一会把发🐰🐇🦔全口了🐰：一会把发🐰🐇🦔全口了", 55], ["🐰🧱❄️🐶🎈🦔🐉🧊🎍🐰🧱❄️🐶🎈🦔🐉🧊🎍", 55], ["艾斯比", 53], ["🐰：（感觉不如倒转啊）哈哈", 52], ["往里进往里进", 51], ["🐰：（🎈什么B理解）你在说什么", 50], ["可惜", 50], ["玩对了", 47], ["哈哈哈", 46], ["孕", 43], ["坏了", 42], ["哈哈", 41], ["哈哈哈哈", 40], ["吹哨", 36], ["何意啊", 36], ["-30", 35], ["爆", 34], ["大大方方漏", 33], ["发狂了", 31], ["🐰😴→🦔🐉🧊🎍→🧐→🐰🥳", 30], ["？？", 30], ["脸色对了", 29], ["羞死了", 29], ["886886", 28], ["-10", 28], ["何意味", 28], ["er", 27], ["自己退", 27], ["窝里横", 27], ["🐰：（解说好累...）（选手好菜...）（好想倒转...）（屁股好痒...）", 27], ["杀", 26], ["藏好了", 26], ["🐰🐰🐰🐰", 26], ["喂喂喂", 26], ["哈哈哈哈哈", 25], ["🐰：（🐉转起来了）齁哦哦哦🐰：（🐉转起来了）齁哦哦哦", 24], ["🐰（思考🤔）：感觉冠军该是我的......", 24], ["🐰：我仍是世一转🐰：我仍是世一转🐰：我仍是世一转", 23], ["🐰：军哥快回来了大家快跑🐰：军哥快回来了大家快跑🐰：军哥快回来了大家快跑", 23], ["-2", 23], ["运", 23], ["卫戍协议最强的3个xlg：叙拉古，谢拉格和❄🐺🐕", 22], ["烧脑", 22], ["🐰：冠厨小队没了军不行啊🐰：冠厨小队没了军不行啊🐰：冠厨小队没了军不行啊", 22], ["看看人家", 22], ["好轴", 22], ["🐇：那个解说台上的🦔终于把位置让出来", 22], ["军美甚", 21], ["？？？？", 21], ["🐰：🕳️🐰：🕳️🐰：🕳️🐰：🕳️🐰：🕳️", 21], ["饿", 21], ["坏", 21], ["🐰：🎈什么理解", 20], ["锁", 20], ["难道说", 20], ["少爷", 20], ["脸色不对了", 20], ["🐰：哦？", 20], ["大大方方吸", 20], ["大大方方", 20], ["往里进", 19], ["不要不要", 19], ["再来一把", 19], ["cs", 19], ["对咯", 19], ["好好好", 19], ["黑幕", 19], ["焰尾藏好了", 19], ["🐰：哈哈", 18], ["🐰：（🧊什么B理解）。。。", 18], ["🐰：发🐰和🐇的等死吧🐰：发🐰和🐇的等死吧🐰：发🐰和🐇的等死吧", 18], ["🐰🐰🐰🐰🐰🐰🐰🐰", 18], ["锡人", 18], ["🐰🧋：倒转业远见远见转转转也会转ynsluwuguanxingyuan", 18], ["穴", 17], ["🐇🐇🐇", 17], ["🐰：（解说好累）（选手好菜）（不如倒转）（屁股好痒）", 17], ["000", 17], ["杀杀杀", 17], ["卡卡卡", 17], ["余额不足哦", 17], ["善意漏怪", 16], ["你甘心吗", 16], ["吸吸吸", 16], ["🐰：（感觉不如倒转啊）卧槽", 16], ["杀了", 16], ["【🐺❤️🍬】→💰→🐰", 16], ["我已启动", 16], ["🐰：（解说好累...）（选手好菜...）（不如倒转...）（屁股好痒...）", 16], ["恩人来了", 16], ["0", 16], ["🐰：感觉不如倒转", 15], ["🐰：憋笑🐰：憋笑🐰：憋笑🐰：憋笑🐰：憋笑", 15], ["全对", 15], ["🐰：不是啊", 15], ["🐰：憋笑", 15], ["你是？", 15], ["好多区", 15], ["军奴sc", 15], ["信标", 14], ["对的对的", 14], ["🐰：我依然是世一转", 14], ["高高在上", 14], ["好", 14], ["🐰：加速器（绝望的嘶吼）🐰：加速器（绝望的嘶吼）🐰：加速器（绝望的嘶吼）", 14], ["🐰：（🐉已开转）齁哦哦哦哦哦🐰：（🐉已开转）齁哦哦哦哦哦", 14], ["大大方方往里进", 14], ["🐰🐰🐰🐰🐰", 14], ["🐰:想和🐉一起倒转❤️🐰:想和🐉一起倒转❤️🐰:想和🐉一起倒转❤️", 14], ["🐰：运", 14], ["🐰：有人没播报我不说是谁🐰：有人没播报我不说是谁", 14], ["kkrj", 13], ["🐰：倒转！", 13], ["🐰：（🐉已开转）齁哦哦哦哦哦❤️🐰：（🐉已开转）齁哦哦哦哦哦❤️", 13], ["🐰（咬牙切齿）：发牌都很顺啊", 13], ["没办法", 13], ["🐰：怎么还不倒转。。🐰：怎么还不倒转。。🐰：怎么还不倒转。。", 13], ["🐰：（🐉哥真棒❤看着伤害真高❤）怎么🦔50了？（咬牙切齿）", 13], ["🐰：也许远见才刚刚黏住🐰：也许远见才刚刚黏住🐰：也许远见才刚刚黏住", 13], ["🐩", 13], ["少爷来了", 13], ["军怒", 13], ["🐇：唐人爆率高", 13], ["🐰：🐉就是🐉🐰：🐉就是🐉🐰：🐉就是🐉", 12], ["dnys", 12], ["🐰：🦔大哥（故作深沉），他能做到吗？（戏谑）他全漏了！（狂喜）", 12], ["只会这个", 12], ["🐇：孕", 12], ["毒布天下", 12], ["gxyy", 12], ["太变态了", 12], ["完了", 12], ["升", 12], ["🌭", 12], ["主台炸了", 12], ["🐰：🦔好菜哈哈🐰：🦔好菜哈哈🐰：🦔好菜哈哈", 12], ["安慰在哪", 12], ["🐰🐰🐰🐰🐰🐰", 12], ["d", 11], ["big", 11], ["🐰💺：诶这椅子居然能转一圈，真不错欸！woc坏了坏了坏了我耳机线把自己缠住了", 11], ["哈哈哈哈哈哈哈", 11], ["开了", 11], ["毒播报", 11], ["🐰：一会把不发🐰🐇🦔🐉全口了🐰：一会把不发🐰🐇🦔🐉全口了", 11], ["智能bgm", 11], ["🐰：该窝里横了🐰：该窝里横了🐰：该窝里横了🐰：该窝里横了🐰：该窝里横了", 11], ["🐰：（感觉不如倒转啊）起飞了", 11], ["i罗tv", 11], ["力竭了", 11], ["🐰：饿啊", 11], ["🐰：我上早转起来了。。🐰：我上早转起来了。。🐰：我上早转起来了。。", 11], ["尿了没", 11], ["再见了军小弟", 11], ["退了弹丸论破", 11], ["军哥别杀我", 11], ["大大方方升", 11], ["退役", 10], ["舒服了", 10], ["再见了", 10], ["🐰🖥️:哈哈🐰🖥️:哈哈🐰🖥️:哈哈🐰🖥️:哈哈🐰🖥️:哈哈", 10], ["练功", 10], ["🐰：（听不懂但还是好气啊😒....）", 10], ["🐇：哈哈", 10], ["上道？", 10], ["🐰：（看着这宴，想起了被冠军厨抛弃的自己）让她自己玩就好", 10], ["神了", 10], ["对喽", 10], ["🐰：？", 10]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
