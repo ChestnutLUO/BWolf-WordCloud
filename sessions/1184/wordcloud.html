@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 偷玩三角洲 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>偷玩三角洲 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-10 13:09</span>
+      <span>弹幕数: 12677</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["小兔喝奶", 861], ["？", 669], ["区", 457], ["说不出话", 350], ["你是？", 256], ["睡觉", 130], ["?", 65], ["坏结局", 59], ["学", 57], ["好结局", 55], ["孕", 50], ["陌生", 46], ["吃力", 45], ["地震了", 36], ["装模作样", 35], ["懂你意思", 35], ["不必麻烦了🦔阁下，我是🐰，罗德岛的干员测评部长，从现在开始，舟区由我全权接管", 34], ["帅", 33], ["运", 29], ["你是", 27], ["？？？", 27], ["12", 24], ["饿", 24], ["艾斯比", 24], ["主播主播，新干员回响什么杯", 21], ["何意啊", 20], ["马", 20], ["fw", 19], ["不赖", 18], ["弹幕别压力我军小妹了😭😭一会宝贝要哭哭了", 18], ["望月哥哥野排疾风好菜啊，怎么还吃这么多？", 17], ["开庭", 16], ["你是?", 14], ["喝奶", 14], ["还真是", 14], ["ittv", 14], ["喜欢伪装人类", 14], ["k", 14], ["军哥林翩翩都卖50一次，你30就念sc，你比林翩翩还能卖", 13], ["烧脑", 13], ["超大杯", 13], ["好枪", 12], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长，从现在开始粥区由我全权接管。", 12], ["吹哨", 11], ["军神开播了", 11], ["已取餐", 11], ["何意味", 11], ["军哥我腿疼", 11], ["军奴", 11], ["升堂", 11], ["狼心糖什么时候才能意识到这是一个FPS低手在给你直播", 11], ["？？？？", 11], ["-30", 10], ["好烟", 10], ["哈哈大笑", 10], ["压力一只肥兔？", 10], ["装模做样", 10], ["威武", 10], ["豪到你了？", 10], ["你们这些弹幕看到狼神一点瑕疵就发哈哈大笑，等着吧，更招笑的在后面", 10], ["小馋猫", 9], ["不用看", 9], ["暴露狂", 9], ["唐人爆率", 9], ["@好姐妹反季雪：带着军哥的黄桃来找我，一人一条丝袜[汤圆]", 9], ["？？", 9], ["军哥又能怎么样呢，放手自己操作吗，本质高手不需要呀", 9], ["🍼🍼🍼🍼", 9], ["喂喂喂", 8], ["886886", 8], ["🐰：三千军奴可吞周！", 8], ["卡", 8], ["可惜", 8], ["军哥你能快点趋势吗？我想看望月的视角", 8], ["羞死了", 8], ["军神开播了，真的假的", 8], ["神了", 8], ["穴", 8], ["🐰：豪到你了？", 8], ["不疼", 8], ["火一儿", 7], ["害人精", 7], ["灭队！", 7], ["饿就吃饭", 7], ["两腿一张", 7], ["🐎", 7], ["区区", 7], ["军哥神了", 7], ["宝贝真棒", 7], ["刘涛神力", 7], ["大大方方喝奶", 7], ["同龄人🦔，我🐰，就很[捂脸]", 7], ["凶", 7], ["区了", 6], ["塞北的雪", 6], ["补偿局", 6], ["？你是", 6], ["我知道了", 6], ["🐇：喝奶好爽", 6], ["统一口径是商单", 6], ["哈哈哈哈哈", 6], ["🐰：兵败如山倒desuwa😫军哥要上了😲军哥跳拉了😍军哥倒了😭", 6], ["那就是要", 6], ["🐰：叫我扣啊，已经出水了齁哦❤️...什么是扣子弹？", 6], ["好兄弟罗德狗：你们能想到的所有军哥黄桃都是真的", 6], ["大大方方吃", 6], ["区区区", 6], ["zdjd", 6], ["开了", 6], ["队友大残", 6], ["逛街", 6], ["军哥商单呢", 6], ["老贝榨", 6], ["偷玩", 6], ["3000军奴", 6], ["吸吸吸", 6], ["转：你们别造狼小妹黄桃了，因为那些都是真的", 6], ["🐰：开枪，被打，修甲，打药，逛街", 6], ["有卡", 6], ["同龄人：林翩翩  我：狼翩翩  就很[捂脸]", 5], ["军事区", 5], ["诗人", 5], ["爆了", 5], ["军神开播了？真的假的", 5], ["依旧暴露狂", 5], ["扫", 5], ["0", 5], ["伪装人类", 5], ["植物，动词，那些说🐰请不动人机的人呢？", 5], ["喝奶奶", 5], ["🍼🍼🍼", 5], ["内鬼", 5], ["🐰🍑🐦😻", 5], ["hyw", 5], ["金蛋免费了", 5], ["🐰（思考🤔30s）：万一狼小妹还是好女孩呢", 5], ["🐇", 5], ["惊天3000军奴", 5], ["统一口径", 5], ["军哥同接有林翩翩多早就上百大了", 5], ["哈哈哈", 5], ["军神", 5], ["军神开播了，真的假的？", 5], ["豪到你了", 5], ["享受", 5], ["黑子说话", 5], ["你是谁", 5], ["🦔", 5], ["🐴", 4], ["狼神开播了，真的假的", 4], ["咖啡机一个亿", 4], ["军奴：什么时候能看到军哥的张姐被比特套住[可怜]", 4], ["感觉军哥扣子弹没有蛋神熟练啊", 4], ["豪到我了", 4], ["🐰：🐱大哥生气了，又得被凿了……", 4], ["黑兔说话黑兔说话黑兔说话黑兔说话", 4], ["狼翩翩：林翩翩同接才多少，我同接4K！", 4], ["？你是？", 4], ["弹幕太变态了", 4], ["统一口径，是商单", 4], ["🐰：开枪，然后是修甲，打血，开枪，修甲", 4], ["点你呢", 4], ["码头牛逼", 4], ["敷衍", 4], ["刷心了", 4], ["惊天4000军奴", 4], ["🐰：万一我也是零点刷新呢……，我是说万一", 4], ["谁提醒的", 4], ["我的假牙", 4], ["千万别发小兔喝奶", 4], ["千万别关灯", 4], ["我去，不早说", 4], ["血狼破军。。。。我怀孕了", 4], ["臭了", 4], ["压力一只肥兔", 4], ["泼", 4], ["爆", 4], ["军哥开播了，真的假的", 4], ["坏", 4], ["老被炸", 4], ["🍼🍼🍼🍼🍼🍼", 4], ["准", 4], ["🦔下令了，摧毁本直播间🦔下令了，摧毁本直播间🦔下令了，摧毁本直播间🦔下令", 4], ["k头", 4], ["千万别让军哥知道你是绿裤子", 4], ["🐰：叫我扣啊，已经出水了齁哦❤️...什么是扣子弹", 4], ["3000军奴可吞周", 4], ["🐰：万一麦晓雯还是好女孩呢", 4], ["🐰👉🔦（持续照射30s）：照亮航天！", 4], ["哈哈哈哈", 4], ["炸单了", 4], ["我去真开播了", 4], ["🍼", 4], ["血狼破军测试🐰❗️此弹幕为血狼破军专属弹幕🐰非血狼破军请勿加一🐰", 4], ["开了？", 4], ["🦔：🐰这么强，怎么不护我两把", 4], ["有感觉吗", 4], ["🐰💧本条流汗为小兔专属，不是小兔不要流汗", 4], ["fvv", 4], ["不必麻烦了🦔阁下，我是🐰，罗德岛的测评部长，从现在开始，舟区由我全权接管", 4]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
