@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看终末地前瞻 / 看看前瞻 / 和笋哥三角洲 / 三角洲野排 / 三角洲联机 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看终末地前瞻 / 看看前瞻 / 和笋哥三角洲 / 三角洲野排 / 三角洲联机 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-11 18:40</span>
+      <span>弹幕数: 58850</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟：终末地</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 2957], ["说不出话", 995], ["懂你意思", 967], ["爆了", 956], ["区", 594], ["卡比", 379], ["好好好", 329], ["甜甜甜", 292], ["886886", 287], ["?", 258], ["小兔喝奶", 247], ["睡觉", 237], ["呃呃", 228], ["不赖", 199], ["卡卡卡", 182], ["大大大", 180], ["？？？", 175], ["毒直播", 149], ["吓哭了", 148], ["明日方舟亏了", 138], ["skip", 135], ["难道说", 133], ["该排榜了", 130], ["明日方舟赚了", 128], ["早干嘛去了", 128], ["爆", 121], ["何意味", 113], ["云龙", 108], ["毒官方", 103], ["神了", 101], ["886", 96], ["llppqhh", 91], ["不必麻烦了🦔阁下，我是🐇，罗德岛的干员测评部长，从现在开始，舟区由我全权接管", 88], ["往外出往外出", 88], ["喂喂喂", 83], ["酸雨c", 82], ["dnys", 81], ["你什么冠军", 80], ["羞死了", 80], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长，从现在开始粥区由我全权接管", 76], ["气氛对了", 76], ["sc爆了", 76], ["还真是", 75], ["艾斯比", 74], ["帅", 72], ["开门", 69], ["？？", 68], ["cs", 68], ["不播就滚", 65], ["哈哈大笑", 65], ["马", 64], ["晕晕", 60], ["地震了", 58], ["这个好", 58], ["后备隐藏能源", 58], ["危机合约", 58], ["你是？", 57], ["刷怪了", 56], ["定制", 55], ["毒前瞻", 55], ["口口", 51], ["hyw", 50], ["就一个？", 49], ["兔头", 49], ["不播就丨", 48], ["饿", 48], ["退了洲", 48], ["老婆", 45], ["卡", 45], ["不要不要", 45], ["对的对的", 44], ["何意啊", 44], ["哈哈哈", 43], ["给", 43], ["啊？", 42], ["合约", 42], ["排榜", 41], ["学", 40], ["🐰：lxt发点能读的", 40], ["退了卫", 38], ["扫", 38], ["明日方舟", 38], ["往外出", 38], ["超大杯", 37], ["吹哨", 37], ["我的问题", 37], ["哦？", 37], ["云", 36], ["？？？？", 35], ["少人？", 35], ["325", 35], ["呃呃呃", 34], ["毒配队", 34], ["很遗憾", 34], ["噔噔噔噔", 34], ["哈哈哈哈", 34], ["恐怖游戏", 34], ["all", 33], ["电42", 32], ["妈妈", 32], ["吃力", 31], ["三区兄弟", 31], ["就这？", 31], ["终末地亏了", 31], ["龙龙狼狼合约冠军", 31], ["等我启动", 30], ["发狂了", 30], ["好结局", 30], ["商单来了", 30], ["扣", 30], ["mrfz赚了", 30], ["llllqhh", 30], ["陌生", 29], ["三次开服", 29], ["好看", 29], ["尿", 29], ["终于", 29], ["鸣潮3.3>终末地1.2", 28], ["转转", 28], ["不必麻烦了🦔阁下，我是🐰，罗德岛的测评部长，从现在起，舟区由我全权接管", 28], ["逆天", 28], ["危机合约？", 28], ["支支吾吾", 28], ["毒月卡", 27], ["rua", 27], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长，从现在开始粥区由我权接管", 27], ["点你呢", 27], ["难道说？", 27], ["可惜", 27], ["潜能焦虑了", 26], ["唐", 26], ["好", 26], ["难绷", 26], ["我已启动", 26], ["装模作样", 25], ["大公鸡", 25], ["破军啊，这个游戏叔看不懂，能不能玩那个到处捡垃圾然后被坏人打死的游戏", 25], ["🐰：庄方宜是绿裤子，说到绿裤子……噔噔噔噔", 25], ["膨胀了", 25], ["逆天id", 25], ["怒潮", 24], ["666", 24], ["卫", 24], ["✋停一下，全世界坠可爱的宝宝血狼破军粗现o（=·w〈=)☆", 24], ["成立新巅峰", 24], ["合约？", 24], ["真投入", 23], ["男的来了", 23], ["化粪池", 23], ["马完了", 23], ["早干嘛了", 23], ["看看人家", 23], ["史", 23], ["酸雨C", 23], ["豪到我了", 23], ["那没事了", 22], ["新神已至", 22], ["🐰：🦔什么意思", 22], ["敖厂长", 22], ["mrfz亏了", 22], ["收到", 22], ["niko", 22], ["二次开服", 22], ["没了？", 22], ["🐰：不必麻烦了，🦔阁下，我是🐰罗德岛的测评部长，从现在开始粥区由我权全接管", 22], ["这是什么前瞻", 21], ["还行", 21], ["好烟", 21], ["开了", 21], ["无敌了", 21], ["逆天sc", 21], ["怒潮庄方宜", 21], ["商单", 20], ["退了三角洲", 20], ["单up？", 20], ["强强", 20], ["cjb", 20], ["房管干活", 20], ["🐰", 20], ["哈哈哈哈哈", 20], ["杀杀杀", 20], ["路边", 20], ["12", 20], ["早该有了", 20], ["🐰：好无聊", 20], ["恩情", 20], ["没活了", 20], ["毒商单", 20], ["就这", 19], ["苹果游戏", 19], ["电流相生", 19], ["🐰：巨兽是什么", 19], ["我爱她", 19], ["-30", 19], ["卧槽", 19], ["哦", 18], ["三条区", 18], ["看看", 18], ["豪到你了？", 18], ["我知道了", 18]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
