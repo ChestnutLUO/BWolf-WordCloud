@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 收到，已加仓 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>收到，已加仓 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-22 18:10</span>
+      <span>弹幕数: 76780</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 3726], ["发狂了", 1467], ["收到", 1300], ["说不出话", 1243], ["恩人", 1218], ["穴", 1013], ["250886", 972], ["886", 700], ["孕", 698], ["150", 687], ["保安", 663], ["扫", 646], ["魄力", 635], ["学", 583], ["艾斯比", 552], ["发狂", 443], ["下课", 422], ["快拿开", 403], ["懂你意思", 400], ["癔症", 388], ["区", 375], ["120", 328], ["大大大", 314], ["爆了", 292], ["?", 289], ["软蛋", 260], ["挂", 237], ["？？？", 235], ["小小小", 234], ["跑", 228], ["史", 225], ["100", 225], ["羞死了", 220], ["325799", 219], ["睡觉", 204], ["运", 188], ["军奴电池", 178], ["军奴", 173], ["认可", 170], ["-30", 159], ["+28", 157], ["还真是", 154], ["保安！", 153], ["加仓", 149], ["下船", 137], ["呼呼呼", 134], ["-2", 133], ["黏住", 132], ["已加仓", 122], ["石", 120], ["冲", 120], ["哈哈大笑", 115], ["-32", 104], ["oi", 101], ["气不气", 98], ["886886", 95], ["准", 94], ["7", 94], ["小兔喝奶", 91], ["再见了玉小弟", 90], ["130", 89], ["哦对了", 87], ["难道说", 87], ["200", 84], ["不要不要", 80], ["哈哈哈", 80], ["799", 79], ["冲刺", 78], ["撤", 77], ["哈哈哈哈", 76], ["有感觉吗", 74], ["再见了黑小弟", 73], ["小", 72], ["我的我的", 71], ["？？", 70], ["魄力！", 69], ["dnys", 69], ["给了", 69], ["跑了", 68], ["没办法", 67], ["100w", 67], ["复读", 66], ["军奴电池包", 66], ["黑子尿了没", 64], ["80", 63], ["哈哈哈哈哈", 62], ["很遗憾", 62], ["烂", 62], ["？？？？", 62], ["冲锋", 61], ["舒服了", 61], ["🤡", 59], ["糯", 58], ["哦？", 57], ["最没办法的直播间", 56], ["狂", 56], ["人家才不在乎呢", 56], ["保安鞋底痒了", 56], ["黑匣子有感觉吗", 54], ["恩人来了", 53], ["军奴sc", 53], ["8bc", 52], ["1", 52], ["气不气气不气", 52], ["150w", 51], ["大主播了", 51], ["非洲之心有感觉吗", 51], ["尿了没", 50], ["那就是要", 50], ["拉完了", 50], ["大", 50], ["疯了", 49], ["收到，已加仓", 49], ["秒了", 48], ["110", 48], ["砍头", 47], ["6", 47], ["sc免费了", 46], ["-200", 46], ["心", 46], ["给他了", 46], ["余额不足哦", 46], ["160", 45], ["烂完了", 45], ["毒攻略", 45], ["飞机", 44], ["快拿开！", 44], ["不赖", 44], ["iceb", 44], ["指导价", 43], ["140", 43], ["车钥匙有感觉吗", 43], ["黑匣子", 42], ["0红", 42], ["你是主播", 41], ["车钥匙", 41], ["大的来了", 40], ["再见了", 40], ["有大货", 40], ["看看人家", 39], ["猛攻", 39], ["799325", 39], ["何意啊", 39], ["乐", 38], ["💩", 38], ["哈哈哈哈哈哈", 38], ["卵蛋", 38], ["爆", 37], ["该发狂了", 37], ["好结局", 37], ["哈基米", 37], ["没利润了", 36], ["可惜", 36], ["何意味", 36], ["撤梯子", 36], ["下课！", 36], ["大仓", 36], ["再见了，玉小弟", 36], ["325", 36], ["极限", 36], ["没有利润空间了", 35], ["吹哨", 35], ["有心", 35], ["啊？", 35], ["886250", 34], ["120w", 34], ["玩对了", 34], ["给我擦皮鞋", 34], ["888888", 34], ["90", 33], ["偷", 33], ["88", 33], ["飞什么", 33], ["跑路", 33], ["djwcb", 33], ["军奴匕首", 33], ["敷衍", 33], ["心来了", 32], ["跑车钥匙有感觉吗", 32], ["公式", 32], ["甜甜甜", 32], ["梭哈", 32], ["你失望的表情", 32], ["粉丝爆笑中", 32], ["拿下", 32], ["发光了", 31], ["180", 31], ["石狮子有感觉吗", 31], ["黑匣子来了", 30], ["？？？？？", 30], ["不堪一击", 30], ["直接发狂", 30], ["呼呼呼尿了没", 30], ["下船！", 30], ["发狂！", 30], ["收到收到", 30], ["精品小仓", 30], ["zawazawa", 29], ["快跑", 29], ["上船", 29]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
