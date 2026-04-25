@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看周年前瞻 / 开口！ | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看周年前瞻 / 开口！ 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-25 18:52</span>
+      <span>弹幕数: 129853</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 7432], ["区", 2932], ["懂你意思", 2677], ["说不出话", 2012], ["爆了", 1360], ["好好好", 927], ["难道说", 836], ["收", 699], ["呼呼呼", 689], ["睡觉", 670], ["?", 589], ["很遗憾", 557], ["dnys", 537], ["吓哭了", 536], ["国产剧情", 510], ["ve", 500], ["扫", 469], ["军哥我怕", 453], ["哐哐哐", 423], ["口口", 423], ["何意味", 413], ["zmd亏了", 373], ["快拿开", 373], ["甜甜甜", 371], ["不赖", 370], ["？？？", 360], ["skip", 337], ["羞死了", 333], ["尿了没", 332], ["哈哈大笑", 331], ["还真是", 327], ["fw", 324], ["白子尿了没", 320], ["发狂了", 318], ["gxyy", 317], ["尬", 316], ["黏住", 301], ["收到", 279], ["白子说话", 267], ["黑幕", 266], ["zmd赚了", 258], ["艾斯比", 249], ["退了口", 248], ["你是？", 237], ["老三样", 229], ["妈妈", 223], ["all", 221], ["哦？", 210], ["晕晕", 209], ["画了不卖", 207], ["中杯", 202], ["全军出击", 197], ["神了", 185], ["zmd关服了", 180], ["？？", 175], ["小兔喝奶", 168], ["超大杯", 167], ["这下听懂了", 166], ["高高在上", 161], ["学", 158], ["爆", 156], ["可爱捏", 152], ["卫", 149], ["假赛", 148], ["吹哨", 139], ["不要不要", 139], ["-30", 136], ["开门", 136], ["血狼", 134], ["何意啊", 130], ["难道说？", 129], ["等我启动", 127], ["man", 126], ["呃呃", 126], ["黑子尿了没", 122], ["马头", 119], ["下课", 118], ["开口", 118], ["退了口口", 114], ["再见了卫小弟", 111], ["这片大地", 110], ["拉表", 109], ["似了", 106], ["oi", 104], ["卡比", 104], ["疯狂的鹿", 104], ["卫呢", 103], ["开一局", 103], ["hide", 102], ["好看", 102], ["先说结论", 102], ["何忆卫", 102], ["白子操盘了", 101], ["🤡", 101], ["盐酸", 99], ["兔头", 98], ["帅", 98], ["？？？？", 96], ["马头牛逼", 96], ["白子不演了", 95], ["啊？", 95], ["可爱", 94], ["右", 93], ["终末地亏了", 92], ["刚来什么杯", 92], ["奸商", 91], ["舍利子回魂", 91], ["终末地赚了", 90], ["hyw", 89], ["workwork", 88], ["门外汉", 87], ["操盘", 87], ["哈哈哈", 86], ["尿了", 85], ["不能", 84], ["无敌了", 84], ["卡卡卡", 83], ["孕", 83], ["哈哈哈哈", 82], ["哦对了", 80], ["我咬死你", 80], ["左", 80], ["起飞", 78], ["害怕", 78], ["新神已至", 77], ["喂喂喂", 75], ["中杯开会", 75], ["刚来，什么杯", 74], ["猞猁子回魂", 74], ["杀杀杀", 73], ["饿", 73], ["怪猎呢", 73], ["新干员追加", 72], ["收！", 72], ["哦", 71], ["325", 71], ["好", 70], ["已取餐", 69], ["听不懂", 69], ["开盘", 68], ["不必麻烦了🦔阁下，我是🐇，罗德岛的干员测评部长，从现在开始，舟区由我全权接管", 68], ["公式", 67], ["好位置", 67], ["支支吾吾", 66], ["smbdj", 64], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长，从现在开始粥区由我权接管", 63], ["哈哈哈哈哈", 62], ["军哥这里是泪点", 62], ["达美乐", 62], ["kksk", 62], ["我去", 62], ["集", 62], ["又是你", 60], ["操盘了", 60], ["我票呢", 58], ["肉鸽", 58], ["🐰", 58], ["区区", 58], ["穴", 57], ["毒演示", 57], ["美美美", 56], ["什么杯", 55], ["罗哥神了", 55], ["听懂了", 55], ["不孝", 55], ["我知道了", 54], ["拉了", 54], ["啊", 54], ["对的对的", 53], ["886886", 53], ["黑子说话", 53], ["我顶死你", 53], ["罗哥", 53], ["VE", 52], ["菜", 52], ["要", 51], ["无人在意", 51], ["谁问你了", 51], ["豪庭", 51], ["谁在说话", 50], ["同意捐献", 50], ["拉电线", 50], ["799", 49], ["该口口了", 48], ["这个好", 48], ["军哥这里要哭", 48], ["杀", 48], ["玩机器", 48], ["马头nb", 47], ["白子操盘", 47], ["哇", 47], ["军哥尿了没", 47], ["td", 46], ["希尔达", 46], ["🐇", 46], ["独步天下", 45], ["转转来了", 45], ["艺术品", 45], ["大大方方口", 44], ["商单来了", 44]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
