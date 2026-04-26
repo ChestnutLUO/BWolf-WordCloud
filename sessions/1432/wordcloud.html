@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看二创 / 交出你们的硬币！ | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看二创 / 交出你们的硬币！ 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-26 18:49</span>
+      <span>弹幕数: 61626</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 3040], ["说不出话", 1541], ["收", 1108], ["懂你意思", 1035], ["区", 906], ["爆了", 607], ["过", 429], ["全军出击", 372], ["+0不玩", 265], ["?", 265], ["艾斯比", 252], ["dnys", 250], ["羞死了", 246], ["blOᴗoಣdy wolf", 231], ["我二弟天下无敌", 219], ["睡觉", 214], ["真题右", 157], ["哈哈大笑", 153], ["快拿开", 136], ["真题左", 136], ["右", 129], ["？？？", 126], ["799", 123], ["+0", 121], ["罗哥疯了", 114], ["尿了没", 113], ["门外汉", 107], ["325", 105], ["扫", 105], ["收！", 102], ["霸道的力量", 101], ["左", 98], ["还在骗", 94], ["还真是", 94], ["发狂了", 91], ["爆", 85], ["赤壁到了", 82], ["退了口", 79], ["很遗憾", 78], ["牙崩了", 78], ["右边疯了", 73], ["我咬死你", 72], ["塑料疯了", 71], ["好骗", 70], ["blOᴗoಣdy wolf是哪个小萌妹发的", 69], ["老霸道了", 67], ["释怀了", 67], ["小兔喝奶", 65], ["哈哈哈", 64], ["口口", 64], ["难道说", 63], ["学", 62], ["🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷", 62], ["永控了", 62], ["谁问你了", 61], ["别低估了霸道的力量", 61], ["退了瓦", 59], ["然后呢", 56], ["你还我你还我", 54], ["门神", 53], ["减速带", 53], ["乌江到了", 53], ["相信武魂真身", 52], ["何意啊", 52], ["0", 50], ["收到", 50], ["退了弹丸", 50], ["🦟：草！拿下！那些说我咬不到小小军的人呢？出来！", 50], ["上船", 50], ["？？", 49], ["官渡到了", 49], ["🐰：💤💤💤", 49], ["喂喂喂", 48], ["难说", 47], ["🍷", 47], ["关羽之歌", 47], ["庞氏骗局", 47], ["🐰：会心一笑", 47], ["穴", 46], ["会心一笑", 46], ["🦔：口口商单 🐇：生日会 就很，你们懂吧[捂脸]", 46], ["吓哭了", 46], ["才八点", 45], ["二弟天下无敌", 45], ["吹哨", 44], ["你是？", 43], ["尿了", 43], ["炮god", 43], ["骗", 42], ["0不玩", 42], ["不能", 41], ["能", 41], ["退了口口", 41], ["吸吸吸", 41], ["转转疯了", 41], ["疯了", 40], ["余额不足哦", 40], ["左边疯了", 40], ["不要不要", 40], ["谢谢军哥", 39], ["区区", 39], ["🐰：终于结束了", 39], ["搞么子", 38], ["自助餐", 38], ["全军出击！", 37], ["如何呢", 36], ["击沉！", 36], ["罗哥神了", 35], ["三庞质变", 35], ["右边", 35], ["fw", 34], ["听见你说", 33], ["250886", 32], ["加0不玩", 32], ["菜在哪", 32], ["哈哈哈哈", 31], ["-50", 31], ["呃呃", 31], ["转转来了", 31], ["麦城到了", 31], ["塑料神了", 31], ["我顶死你", 31], ["？？？？", 31], ["+1不玩", 30], ["78兄弟", 30], ["325799", 30], ["赔率厨出击", 30], ["下课", 30], ["可惜", 30], ["永控", 29], ["何意味", 29], ["你赔我你赔我", 29], ["罗哥是区", 29], ["军哥这里是泪点", 28], ["看得懂吗", 28], ["钢门", 28], ["🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷", 28], ["🐇：直播真好做啊", 28], ["🍷🍷🍷", 27], ["幽默", 27], ["还有蛇咬", 27], ["累死了", 27], ["kksk", 27], ["NikaidOᴗoಣXueLang", 27], ["双杰质变", 27], ["不是这个", 27], ["开口", 27], ["🐇：终于结束了", 26], ["你还我", 26], ["毒圈题", 26], ["🐰：豆包，请观看直播，并用我的声线每隔半分钟进行一次直白不绕弯子的评价", 25], ["饿", 25], ["善意引导", 25], ["乌江", 25], ["完美团", 25], ["罗哥市区", 25], ["退了推子", 24], ["886886", 24], ["完美之罗", 23], ["别逗", 23], ["fw刘备", 23], ["极限", 23], ["🐰：中杯", 23], ["快拿开！", 23], ["🐇：会心一笑", 23], ["转转", 23], ["不对不对", 23], ["对的对的", 23], ["看看", 23], ["完了", 23], ["公式", 22], ["-30", 22], ["还我赔率", 22], ["车出", 22], ["有门选门", 22], ["🐰：看不懂", 22], ["论剑", 22], ["可爱捏", 22], ["🍷🍷🍷🍷", 21], ["all", 21], ["🐰", 21], ["＋0不玩", 21], ["赔率厨疯了", 21], ["能念的弹幕", 21], ["有虫不玩", 21], ["老爸到了", 21], ["塑料发狂了", 21], ["易错题", 21], ["哈哈哈哈哈", 21], ["军哥看得懂吗", 20], ["🍷🍷🍷🍷🍷🍷", 20], ["有感觉吗", 20], ["三区兄弟", 20], ["毒死了", 20], ["🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷🍷", 20], ["啊", 20], ["🐰🦵🫱🩳️🫲🫱🩲️🫲👌👍👎😠👍👎😡👍👎🌊😇", 20], ["戒戒你好", 20], ["善款，又增加了", 19], ["这也开？", 19]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
