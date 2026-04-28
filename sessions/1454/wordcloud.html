@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 无情的撕咬机器 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>无情的撕咬机器 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-04-28 13:51</span>
+      <span>弹幕数: 21924</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 1511], ["区", 1228], ["说不出话", 561], ["小兔喝奶", 422], ["睡觉", 154], ["你是？", 146], ["?", 113], ["吃力", 95], ["不用看", 95], ["？？？", 83], ["艾斯比", 78], ["没办法", 71], ["🐰：追杀一些老鼠🐁放生一些金蛋💰吞食一些针剂💉豪到一些观众🥷", 71], ["懂你意思", 69], ["气氛对了", 67], ["帅", 65], ["学", 60], ["老公", 57], ["陌生", 53], ["好结局", 51], ["马", 50], ["💪🐰💪:弹幕什么时候才能意识到这是一个三角洲大神在给他们直播", 48], ["0", 47], ["fw", 46], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长， 从现在开始粥区由我全权接管", 45], ["不孝", 45], ["话", 44], ["地震了", 43], ["可惜", 43], ["cs", 40], ["-2", 35], ["圣人", 33], ["贴吧见", 33], ["高手", 31], ["kkrj", 31], ["运", 29], ["dnys", 27], ["？？？？", 27], ["快拿开", 26], ["🦔：什么都吃不到在这逛街肚肚饿", 26], ["区区", 26], ["妈妈走咯", 25], ["你又不是zc那样的高手，打稳点呗", 25], ["善款又增加了", 25], ["孕", 25], ["啊？", 25], ["不赖", 24], ["最没办法的直播间", 23], ["区完了", 23], ["？？", 22], ["饿", 22], ["看看人家", 21], ["🐰：没办法", 20], ["🐴", 20], ["豪到我了", 20], ["325", 20], ["🦔:终于看到一个出不了货杀不了人还只能喝奶的直播间了", 19], ["ittv", 19], ["军奴", 19], ["哈哈哈哈", 19], ["僵尸", 18], ["发狂了", 18], ["挂", 18], ["爆了", 18], ["🐰：什么都吃不到在这逛街肚肚饿", 18], ["五尊佛", 18], ["羞死了", 18], ["🐰：人家才不在乎呢", 18], ["吹哨", 17], ["🐰：无情的喝奶机器🍼🍼🍼", 17], ["神了", 17], ["🦔：你又不是🦔那样的高手，打稳点呗", 17], ["穴", 17], ["灭队", 16], ["军条", 16], ["细节325", 16], ["点你呢", 16], ["❄️:我能忍住两小时不串", 16], ["一脚", 16], ["-30", 15], ["🐇：没办法", 15], ["军奴sc", 15], ["我的我的", 15], ["凶", 15], ["不考", 15], ["糯", 15], ["太性情了", 15], ["哈哈哈", 15], ["何意啊", 14], ["白子说话", 14], ["点亮世界", 14], ["装模作样", 14], ["灭队！", 14], ["🍅🤏🐰🤏⚫🤏⚪🤏🍅🤏🐰...", 14], ["绿裤子杀手", 14], ["五尊佛行动", 14], ["全网最没办法的直播间", 14], ["别让军哥知道你是绿裤子", 14], ["哈哈大笑", 13], ["宝贝真棒", 13], ["🐇：什么都吃不到在这逛街肚肚饿", 13], ["🦔:算我一哥求你🐰别杀🐀了 一会晚上打不过了", 13], ["唐", 13], ["豪到你了？", 13], ["马完了", 12], ["何意味", 12], ["老爸到了", 12], ["狼神开播了，真的假的", 12], ["🐰🎀:人家，才不在乎呢[傲娇]", 12], ["❄️💧", 12], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长， 从现在开始粥区由我全权接管", 12], ["尿了没", 12], ["李又不是zc辣样的高手，打稳点呗", 12], ["黑子说话", 12], ["🐰📲🧊📲🦔：🦔：什么都吃不到在这逛街肚肚饿", 11], ["不必麻烦了🦔 阁下，我是🐰，罗德岛的干员测评部长，从现在开始，舟区由我全权接", 11], ["门外汉", 11], ["放生一些金蛋", 11], ["唐人爆率", 11], ["🐇：要让自己变成看起来很忙的样子", 11], ["锁", 11], ["比哥想笑就笑吧", 11], ["妈妈走喽", 10], ["本质高手", 10], ["🐰：黑子说话", 10], ["哈哈哈哈哈", 10], ["🐎", 10], ["区区区", 10], ["放生爆闪", 10], ["逗比哥下令摧毁直播间❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️❄️", 10], ["恭喜老板", 10], ["很遗憾", 10], ["军事区", 10], ["不必麻烦了，🦔阁下，我是🐰，罗德岛的测评部长，从现在开始粥区由我全权接管。", 10], ["逗比寒MillerRHan :\r整这么帅给谁看？整这么帅给谁看？整这么帅给谁看？", 10], ["还真是", 10], ["k", 10], ["好枪", 10], ["🐰：🦔：什么都吃不到在这逛街肚肚饿", 10], ["善款，又增加了", 10], ["压力", 10], ["放生金蛋", 10], ["烧脑", 10], ["❄️：在看见军哥之前没人会真正的养号", 10], ["哈哈哈哈哈哈哈", 10], ["你又不是zc那样的高手，打稳点呗你又不是zc那样的高手，打稳点呗", 10], ["你是主播", 10], ["🦐", 9], ["无敌了", 9], ["🦔:算我一哥求你🐰别杀🐀绿裤子了 一会晚上打不过了", 9], ["🐇🦋：哼，人家才不在乎呢！", 9], ["芜湖", 9], ["不对不对", 9], ["你是人啊", 9], ["主播你怎么来做观光客了 不吃饭吗", 9], ["超大杯", 9], ["🦔：非洲之心在手，笑看喝奶兔头", 9], ["yjts", 9], ["kd来了", 9], ["臭手", 9], ["🐰：装模作样打两枪", 8], ["撕咬", 8], ["🦔", 8], ["跳拉一些空气", 8], ["你是谁", 8], ["328", 8], ["扫", 8], ["烂尾", 8], ["🐇：KD，又增加了", 8], ["没办法啊", 8], ["❄️＆🥖:我们能面无表情的看一个小时不笑", 8], ["耄耋", 8], ["哈哈哈哈哈哈", 8], ["路边", 8], ["老霸道了", 8], ["🐰：过去一个，过去两个，全过去了！", 8], ["唐人爆率高", 8], ["是人类吗", 8], ["坏结局", 8], ["不疼", 8], ["🐇：人家才不在乎呢", 8], ["🐰:日服卫戍怎么还没开...", 8], ["🐰：🔦🔦🔦人机：[捂脸][捂脸][捂脸]队友：[捂脸][捂脸][捂脸]", 7], ["🐰：点亮世界", 7], ["你是?", 7], ["悲情英雄", 7], ["是人吗", 7], ["666", 7], ["追杀一些老鼠🐭🐭放生一些金弹💰💰吞食一些针剂💉💉豪到一些观众🥷🥷", 7], ["我的假牙", 7], ["🐰", 7], ["🦔脸色一沉：🐇他真把号刷黑了来跟我打？", 7], ["fvv", 7], ["？？？？？", 7], ["笋干：宁愿做错也不愿什么都不做 🦔：做错 🐰：什么都不做", 7], ["❄️:我能面无表情的看一个小时不笑", 7], ["李又不是🦔辣样的高手。。打稳点呗。。。", 7], ["！？区区？！", 7], ["好厚的血", 7], ["哪来的心", 7]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
