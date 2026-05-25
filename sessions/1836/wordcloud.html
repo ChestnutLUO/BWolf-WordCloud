@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 试试小鳄鱼爱洗澡！ | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>试试小鳄鱼爱洗澡！ 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-05-25 18:39</span>
+      <span>弹幕数: 55323</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 5390], ["说不出话", 3140], ["区", 2179], ["羞死了", 794], ["笑不出来，1万人对一个明显有智力障碍的人恶语相向，这个世界怎么了。。。", 571], ["?", 454], ["睡觉", 450], ["孕", 408], ["学", 339], ["？？？", 266], ["爆了", 237], ["还真是", 227], ["+1", 226], ["懂你意思", 219], ["苦尽甘来", 217], ["运", 213], ["iceb", 207], ["开智了", 192], ["小兔喝奶", 183], ["水图", 178], ["fw", 146], ["吹哨", 135], ["扫", 127], ["蓟县", 109], ["很遗憾", 109], ["力竭了", 107], ["dnys", 107], ["毒攻略", 106], ["sb", 101], ["我们是冠军", 96], ["？？", 93], ["烧脑", 90], ["何意啊", 87], ["收到", 87], ["⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯", 86], ["严查交大", 84], ["笑不出来，1万人对一个明显有智力障碍的人恶语相向，这个世界怎么了。。", 83], ["今晚都是这个了", 83], ["⎝🗿⎠╰🗿╯⎝🗿⎠╰🗿╯⎝🗿⎠╰🗿╯⎝🗿⎠╰🗿╯", 81], ["我知道了", 79], ["哈哈大笑", 76], ["skip", 74], ["漏完了", 69], ["感觉...不如军哥感觉...不如军哥[鼠]", 68], ["在燃什么", 68], ["穴", 67], ["饿", 67], ["区区", 66], ["gxyy", 64], ["这个直播间真是乌烟瘴气，这么多人攻击主播，举报都举报不过来，看我直接举报直播间", 64], ["智力有问题", 64], ["⎝🐰⎠╰🐰╯⎝🦔⎠╰🦔╯⎝🧊⎠╰🧊╯⎝🐊⎠╰🐊╯⎝🎈⎠╰🎈╯", 63], ["全漏了", 63], ["？？？？", 62], ["若只", 62], ["严查", 62], ["-1", 61], ["可惜", 60], ["886886", 60], ["同意切除血狼两个球的+1…同意切除血狼两个球的+1…同意切除血狼两个球的+1…", 60], ["神了", 59], ["4399", 57], ["余额不足哦", 57], ["话", 56], ["呃呃", 55], ["（三小时后）@转瞬即逝：血狼整晚洗澡大份合集，看完你就知道为什么🐊洗不上澡！", 55], ["超燃洗澡", 54], ["吃力", 54], ["草！拿下！", 53], ["倒转", 53], ["伊利🦆：⚡咦，来了是吧⚡伊利🦆：⚡咦，来了是吧⚡伊利🦆：⚡咦，来了是吧⚡", 52], ["oi", 51], ["🐰❗️血狼破军测试：本弹幕为血狼破军🐇专属，非血狼破军请不要+1", 51], ["开门", 49], ["没办法", 48], ["毒毒", 47], ["我们是冠军！", 45], ["你是人吗", 45], ["不是，你们真有+1键啊😨", 44], ["诗人？", 43], ["何意味", 43], ["吸吸吸", 43], ["诗人", 42], ["🫧❗水精灵测试：本弹幕为缪尔赛斯🫧专属，非缪尔赛斯请不要+1", 42], ["🐰：怎么没有人发sc教我玩啊，装蠢装不下去了。。", 41], ["喂喂喂", 41], ["🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯⎝🐰⎠╰🐰╯", 41], ["往外出往外出", 39], ["啊", 39], ["足小妹狼交BV1Yr4y1A72a", 39], ["是人类吗", 38], ["🐊", 38], ["886", 37], ["+7", 37], ["（5小时后）@转瞬即逝Elapse：血狼破军整晚小鳄鱼大份合集", 37], ["退了刀剑", 37], ["全对", 36], ["区完了", 36], ["倒转区", 36], ["超大杯", 36], ["极限", 35], ["上交这招太狠了", 35], ["笑不出来，1万人对一个明显有智力障碍的人恶语相向，这个世界怎么了。", 35], ["哈哈哈哈", 34], ["坏结局", 33], ["🐊🐊🐊", 33], ["严查上交", 33], ["@转瞬即逝：血狼整晚洗澡大份合集，看完你就知道为什么🐊洗不上澡！", 33], ["bgm对了", 32], ["🦔🦔🦔周公恐惧流言日，狼莽谦恭未篡时🐺🐺🐺", 32], ["帅", 32], ["？？？？？", 32], ["难道说", 32], ["我已经编了七条🐰没人复制粘贴了，但我并不气馁，因为有人四年没有合约冠军还在坚持", 31], ["🐊：终于洗到澡了，脚终于可以洗的和决赛的niko一样软了", 31], ["血狼这个人很可怕😱你可以赢他无数次😏但是只要他赢你一次🤯那你就是彩笔😝", 31], ["是", 30], ["黑话", 30], ["哈哈哈", 30], ["哦对了", 30], ["对在哪", 30], ["！？区区？！", 30], ["@只炮sekipo：水炮没用是什么意思狼神", 30], ["缩影", 29], ["+1展示小鳄鱼凝聚力🐊🐊🐊", 29], ["🐊：🐇帮我带桶洗澡水，收到+1", 29], ["你是人类吗", 29], ["军奴", 29], ["好蠢看不下去了😩…但是能蠢到什么地步呢好想看😬但是好蠢看不下去了😩…", 28], ["退了瓦", 28], ["退了fsf", 28], ["倒转了", 28], ["???", 28], ["nice在哪", 28], ["不会+1的电脑端右键弹幕选择复制，收到的+1", 28], ["哈哈哈哈哈哈", 27], ["@张雪峰老师：血狼，我看你直播没力气啊，要不咱们跑起来？", 27], ["进直播间的赶紧串，不串的跟禁言有什么区别", 27], ["魔法zc目录🥰绝命笋干🥰米勒寒🥰龙哥哥🥰北绊半球🥰血狼破军🤮", 27], ["1", 27], ["🧹清理狼心糖🧹清理狼心糖🧹清理狼心糖🧹清理狼心糖🧹清理狼心糖🧹", 27], ["好结局", 26], ["一只狼神在水边💧嘲笑鳄鱼被水淹🐊一口咬掉狼神鞭🥢狼神大喊我的天😩", 26], ["挤一挤", 26], ["全撤了", 25], ["塞北的雪", 25], ["哈哈哈哈哈", 25], ["你不一样", 25], ["退了口口", 25], ["提丰🥰泥岩🥰42🥰维什戴尔🥰特蕾西娅🥰血狼破军🤮", 25], ["若至", 25], ["唐", 25], ["看力竭了", 25], ["icebee", 24], ["哼", 24], ["實況主你好，請問你有沒有好用的鍵盤推薦，我看了你幾天電動實況S键和B键就坏了", 24], ["🦔周公恐惧流言日，狼莽谦恭未篡时🐺", 23], ["军奴sc", 23], ["诗人啊", 23], ["复旦这招太狠了", 23], ["全错", 23], ["寄", 22], ["对吗", 22], ["神人", 22], ["恭喜鸭鸭", 22], ["放生", 22], ["军哥关注你这么多年了 其实直播间1w同接都是我的小号 不信我换个号再发一遍", 22], ["军哥逼你们看了吗 一直喷", 22], ["鸭子呢", 22], ["loser", 22], ["🗿：你们觉得呢？🗿：你们觉得呢？🗿：你们觉得呢？🗿：你们觉得呢？", 21], ["确实", 21], ["急了", 21], ["出来了", 21], ["/", 21], ["大了", 21], ["荆芥：WC兄弟你这什么id,我甘拜下风", 21], ["爆", 21], ["🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏🐇凿⛏", 21], ["小军啊，你玩的这个叔看不懂，叔喜欢你哪个到处捡一堆垃圾然后被好人打死的游戏", 21], ["我的我的", 21], ["@张老师：🦅角你说的心脏修缮站是什么？我也想整一个。", 20], ["nice", 20], ["退了灾厄", 20], ["不够", 20], ["不准再复制弹幕了，收到+1", 20], ["没了", 20], ["你是人啊", 20], ["我去不早说", 20], ["动漫量", 20], ["发狂了", 19], ["大大方方漏", 19], ["毒洗澡水", 19], ["快在哪", 19], ["有感觉了", 19], ["绝对的若只，由此而生的卡关，教会你装唐的是！", 19], ["袅袅", 19], ["做题区", 19], ["退了p5", 19], ["cs", 19]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
