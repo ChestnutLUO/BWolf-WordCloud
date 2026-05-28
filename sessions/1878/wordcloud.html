@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 继续看口口默示录外传 / 久违的三角洲环节 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>继续看口口默示录外传 / 久违的三角洲环节 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-05-28 18:43</span>
+      <span>弹幕数: 40776</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 3143], ["说不出话", 1115], ["爆了", 813], ["睡觉", 568], ["?", 332], ["小兔喝奶", 324], ["懂你意思", 279], ["区", 273], ["给", 223], ["很遗憾", 216], ["还真是", 198], ["发狂了", 174], ["偷看", 172], ["？？？", 161], ["886886", 147], ["zawazawa", 138], ["学", 132], ["压抑了", 129], ["太变态了", 121], ["没办法", 108], ["吹哨", 102], ["羞死了", 96], ["dnys", 92], ["扫", 91], ["穴", 88], ["🤡", 87], ["886", 86], ["往外出往外出", 84], ["气氛对了", 83], ["你是？", 80], ["草", 80], ["超大杯", 77], ["尿了没", 77], ["帅", 77], ["zawa", 77], ["何意啊", 76], ["爆", 75], ["恩人", 74], ["豪情在天", 70], ["给给", 69], ["豪", 68], ["饿", 68], ["吓哭了", 68], ["喂喂喂", 67], ["你的名字", 63], ["？？", 61], ["圣人", 60], ["妈妈", 58], ["神了", 55], ["陌生", 55], ["dokidoki", 53], ["哈哈哈", 53], ["难道说", 53], ["回过神来", 51], ["好好好", 51], ["又偷看", 51], ["不要不要", 46], ["哈哈哈哈哈", 45], ["呼呼呼", 45], ["好结局", 44], ["不用看", 44], ["cs", 44], ["脸色不对了", 43], ["老妈到了", 43], ["往日种种", 41], ["日产剧情", 41], ["太想进步了", 41], ["老吃家", 41], ["白月光", 40], ["偷看？", 40], ["？？？？", 38], ["啊噗噜派", 37], ["哈哈哈哈", 37], ["你的名字是", 37], ["完结撒花", 37], ["最后一舞", 36], ["+1", 36], ["我爱她", 36], ["豪到我了", 36], ["可爱捏", 34], ["你是那四个字吗", 34], ["我知道了", 33], ["何意味", 32], ["确实", 31], ["泪目", 30], ["往外出", 30], ["尬", 30], ["脸色对了", 30], ["🤡🤡🤡", 29], ["好女孩", 29], ["看看人家", 29], ["？­", 29], ["甜甜甜", 28], ["🤡🤡🤡🤡🤡🤡", 28], ["大大方方喝", 28], ["回过神来，已是豪饮", 28], ["二哥脸色不对了", 27], ["享受", 26], ["压力", 25], ["不赖", 25], ["苦命鸳鸯", 25], ["高高在上", 25], ["­？", 24], ["哦？", 24], ["好看", 24], ["中杯", 24], ["/", 24], ["公式", 23], ["盒", 23], ["你的名字是？", 23], ["小巧思", 23], ["还有高手", 23], ["完了", 23], ["我吃饱了", 23], ["借过一下", 22], ["爆爆爆", 22], ["大肥兔", 22], ["可惜", 22], ["老霸道了", 22], ["白月光来了", 21], ["善意引导", 21], ["塞北的雪", 21], ["仅此一次哦", 21], ["不想结束啊", 20], ["经典", 20], ["啊？", 20], ["傲娇", 20], ["色魔", 20], ["哈哈哈哈哈哈", 20], ["二次元", 20], ["月卡", 20], ["往里进往里进", 19], ["海小弟", 19], ["一条", 19], ["欧尼酱", 19], ["重尬", 19], ["有内鬼", 19], ["给？", 19], ["wife", 19], ["爆！", 18], ["蛇咬", 18], ["丸辣", 18], ["很复杂", 18], ["山崩了", 18], ["口口", 18], ["回过神来已是豪饮", 17], ["反观", 17], ["再见了", 17], ["她喜欢我", 17], ["二哥只是一个位置", 17], ["摸摸你的", 17], ["别别别", 17], ["🎦 当前房间为轮播内容，同样精彩哦~", 16], ["🤡🤡🤡🤡🤡🤡🤡", 16], ["装模作样", 16], ["维新派", 16], ["神人", 16], ["坏结局", 16], ["这集神了", 16], ["二哥", 16], ["No.🐰", 16], ["无敌了", 16], ["小团体", 16], ["三哥", 16], ["给？！", 16], ["哈哈大笑", 16], ["急了", 16], ["军奴", 16], ["没办法，很复杂", 15], ["俺也一样", 15], ["冠军厨", 15], ["没办法很复杂", 15], ["小医仙", 15], ["敢说一切", 15], ["92：8", 15], ["乐", 15], ["完蛋了", 15], ["给！", 15], ["定制冠军", 14], ["🤡🤡🤡🤡🤡", 14], ["好兄弟", 14], ["压抑", 14], ["恶堕了", 14], ["哈哈哈哈哈哈哈", 14], ["ve", 14], ["偷理解", 14], ["我也是笑了", 14], ["呃呃", 14], ["孕", 14], ["想当二哥了", 13], ["羞辱", 13], ["夺舍了", 13], ["导购", 13], ["好女人", 13], ["毒主播", 13], ["再见了军小弟", 13], ["逮捕", 13], ["1", 13], ["国产剧情", 13], ["我来我来", 13]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
