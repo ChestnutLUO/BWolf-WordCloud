@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 该玩玩女帝篇了 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>该玩玩女帝篇了 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-06-09 18:38</span>
+      <span>弹幕数: 91902</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 8737], ["说不出话", 2426], ["捏柿子", 1403], ["开一局", 1080], ["你老公", 866], ["睡觉", 787], ["懂你意思", 695], ["甜甜甜", 630], ["?", 618], ["？？？", 604], ["111", 565], ["扫", 505], ["好女孩", 433], ["凿凿凿", 415], ["羞死了", 414], ["fw", 409], ["很遗憾", 404], ["dnys", 376], ["坏女人", 373], ["333", 355], ["222", 341], ["孕", 335], ["杀杀杀", 303], ["发狂了", 297], ["何意啊", 290], ["1", 285], ["11111", 284], ["1111", 274], ["2", 259], ["cs", 258], ["还真是", 256], ["何意味", 251], ["skip", 249], ["臭了", 247], ["小兔喝奶", 239], ["豪", 237], ["不要不要", 236], ["口了", 215], ["学", 215], ["2222", 214], ["神了", 209], ["毒闺蜜", 208], ["3", 203], ["区", 203], ["3333", 194], ["超大杯", 189], ["拉拉", 189], ["22222", 185], ["口人魔", 183], ["？？", 179], ["尿了没", 172], ["一哥脸色不对了", 171], ["33333", 169], ["好结局", 163], ["111111", 154], ["你是？", 154], ["口", 149], ["茶", 149], ["国产剧情", 145], ["杀", 142], ["328", 137], ["小医仙", 133], ["🍵", 132], ["脸色不对了", 131], ["吹哨", 127], ["1111111", 126], ["一休尼", 123], ["？？？？", 121], ["我知道了", 119], ["完了", 116], ["有牛啊", 114], ["333333", 114], ["222222", 111], ["二哥", 111], ["智斗巅峰", 108], ["口口口", 107], ["往日种种", 105], ["爱过", 104], ["丸辣", 104], ["hyw", 103], ["啊？", 100], ["绝不认输", 99], ["倒转", 99], ["支支吾吾", 98], ["有牛", 98], ["oi", 95], ["这里删减了", 95], ["天意", 93], ["气笑了", 93], ["886886", 93], ["脸色对了", 92], ["饿", 90], ["豪情在天", 88], ["呃呃", 87], ["老妈到了", 87], ["2222222", 82], ["er", 80], ["难道说", 79], ["太变态了", 78], ["11111111", 77], ["似了", 77], ["给", 76], ["没办法", 76], ["哈哈哈哈", 76], ["+99", 75], ["天黑了", 75], ["+2", 74], ["路边", 74], ["标志", 73], ["没绷住", 73], ["她不一样", 73], ["牛", 72], ["老霸道了", 72], ["豪到我了", 71], ["中杯", 71], ["压抑了", 70], ["恋爱脑", 69], ["？？？？？", 68], ["口！", 67], ["乐", 67], ["这是好事啊", 66], ["3333333", 66], ["智力有问题", 66], ["拉拉？", 65], ["好好好", 64], ["666", 62], ["哈哈大笑", 62], ["哈哈哈哈哈", 61], ["才八点", 59], ["爽", 58], ["🤡", 58], ["可爱捏", 58], ["区区", 57], ["+9", 57], ["全军出击", 56], ["111111111", 55], ["嘉欣", 55], ["狂", 55], ["神人", 55], ["开智了", 54], ["完蛋了", 54], ["好闺蜜", 54], ["哈哈哈", 53], ["军爷", 52], ["天意发力了", 51], ["魔女化了", 51], ["33333333", 50], ["杀！", 49], ["不熟", 49], ["喂喂喂", 48], ["一哥的大手", 48], ["口口", 47], ["凿", 47], ["狼翩翩", 46], ["糯", 46], ["好女人", 46], ["换大盏", 46], ["神人剧情", 45], ["1111111111", 45], ["！？拉拉？！", 44], ["22222222", 44], ["色魔", 44], ["11111111111", 44], ["军奴", 43], ["害人精", 43], ["我咬死你", 42], ["再见了狼小妹", 42], ["天意侵蚀了", 41], ["鸭王", 41], ["不如二哥", 41], ["毒毒", 40], ["🐸🐸🐸", 40], ["睡着了", 40], ["没办法，很复杂", 40], ["下海了", 40], ["确实", 40], ["aug", 40], ["好男孩", 39], ["军哥我怕", 39], ["开一把", 39], ["那就是死了", 39], ["？！拉拉！？", 38], ["+4", 38], ["333333333", 38], ["111111111111", 38], ["撑地", 38], ["886", 38], ["穷举", 38], ["那完了", 38], ["狼小妹", 37], ["一哥", 37], ["老爸到了", 37], ["好似", 37], ["黏住", 37], ["不是哥们", 36], ["恩人", 36], ["喜欢豪", 36], ["小医仙结局", 36], ["不是啊", 36], ["还真有", 36]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
