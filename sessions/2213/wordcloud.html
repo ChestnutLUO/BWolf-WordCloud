@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看仙术杯，场间回应节奏 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看仙术杯，场间回应节奏 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-06-24 17:07</span>
+      <span>弹幕数: 64085</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["捏柿子", 3166], ["说不出话", 2569], ["？", 2477], ["爆了", 818], ["睡觉", 602], ["哈哈大笑", 510], ["哦对了", 475], ["考子平时多打点钱让军哥以后有容错率好吗？", 424], ["考", 346], ["还真是", 312], ["合影", 298], ["学", 235], ["呃呃", 213], ["无条件支持军哥，相信军哥的+1", 210], ["别人都原谅了，串子别抓着狼宝不放了行不？", 208], ["我的忏悔", 188], ["把观众的米拿去捐了给自己洗白有没有懂的", 184], ["没办法", 184], ["爆", 178], ["?", 173], ["好多米😋好爽😋好多米😋好爽😋好多米😋好爽😋好多米😋好爽😋", 169], ["小兔喝奶", 166], ["已切割", 166], ["军大哥我们错了，跪下给你上供", 164], ["懂你意思", 155], ["？？？", 144], ["挑战失败", 133], ["也行吧", 123], ["登山", 119], ["区", 113], ["-100", 110], ["难说", 110], ["-200", 109], ["何意啊", 107], ["没办法，很复杂", 105], ["糯", 102], ["支支吾吾", 96], ["爆爆爆", 93], ["没办法很复杂", 92], ["神了", 88], ["何意味", 88], ["超大杯", 86], ["没绷住", 84], ["九方骂了一整年冠军兄弟，狼哥当一辈子冠军兄弟", 84], ["狼别放弃", 83], ["妻玖玖", 82], ["沉默", 81], ["ai", 77], ["饿", 77], ["什么时候播三角洲", 75], ["人民收米术", 74], ["狼八分钱", 73], ["dnys", 72], ["喂喂喂", 72], ["fw", 72], ["我的青春是血狼破军，五年关注，四年舰长，三天节奏，二字词语，一键踢出", 71], ["欲渡黄河冰塞川，将登太行雪满山！欲渡黄河冰塞川，将登太行雪满山！", 70], ["高高在上", 68], ["？？", 66], ["onp", 65], ["我知道了", 64], ["1", 60], ["气笑了", 60], ["苍蝇来了，你们聊✋苍蝇来了，你们聊✋苍蝇来了，你们聊✋苍蝇来了，你们聊✋", 60], ["唉", 59], ["只捐这一场吗？前几天的节奏sc不捐？想收米大大方方收米[汤圆]", 57], ["转人工", 57], ["留不住？", 56], ["我说以后狼群直接分成上议院下议院得了，真正的小团体，等看不顺眼直接圈t", 55], ["狼别放弃攻略梦", 55], ["弹幕继续伸张正义！弹幕继续伸张正义！弹幕继续伸张正义！", 53], ["大大方方", 53], ["吹哨", 52], ["事主都原谅了，串子别抓着狼宝不放了行不？", 52], ["苍蝇来了", 51], ["喇叭番茄", 51], ["难绷", 50], ["甜甜甜", 50], ["-500", 50], ["呃呃呃", 50], ["也够", 49], ["发生什么事了", 49], ["很复杂", 47], ["切割", 46], ["软脚了", 46], ["想笑就笑吧", 44], ["我說人民收米术有沒有懂的[汤圆][汤圆]", 44], ["狼宝都道歉了，大伙得饶人处且饶人吧", 43], ["狼宝都道歉了，大伙得饶人处且饶人吧，别把狼宝搞哭了", 42], ["确实", 42], ["金色sc就这样不念了吗？", 42], ["有种把今天的sc全回复一遍，可惜你没有", 42], ["别人都原谅了，别抓着狼宝不放了行不？", 41], ["颤颤巍巍见自己", 41], ["绷不住了", 41], ["軍畜什麼時候玩wuwa[汤圆][汤圆][汤圆]", 41], ["轻松绷住", 40], ["呃", 40], ["登山了", 40], ["军哥战争财很爽想笑就笑吧", 40], ["嗷嗷哭嗷嗷哭", 39], ["已读不回", 39], ["嬉皮笑脸", 38], ["早干嘛去了", 38], ["狼的忏悔", 38], ["能不能滚出舟区？", 37], ["当事人都原谅了，串子别抓着狼宝不放了行不？[无语]", 37], ["真的假的", 37], ["100的sc说不念就不念，专挑自己喜欢的读", 37], ["什么时候播三角洲什么时候播三角洲", 36], ["太不知道了", 36], ["不知道就开直播道歉？", 35], ["自己做错事情了挨骂叫被冲吗？军大哥什么时候原谅观众", 35], ["欲渡黄河冰塞川，将登太行雪满山", 35], ["？？？？", 35], ["乐", 35], ["收米狼哥", 35], ["考子来了你们聊", 34], ["还笑", 34], ["给", 34], ["全撤了", 33], ["skip", 33], ["小杯念稿", 33], ["nt房管大大方方禁言,给你结晶完了", 33], ["哈哈哈哈", 33], ["谷番是谁", 33], ["大大方方笑", 32], ["没给全撤了道歉吗？？？？你猜我为什么转生", 32], ["笑嘻了", 32], ["绷", 32], ["某些主播出了事开直播狠狠恰SC的米，完了拿人家钱自己一分钱不花做公益揽好名头", 31], ["-30", 31], ["哈哈大笑了", 31], ["招笑", 30], ["个通宵肝zmd成绩，明天再上来总结道歉，", 30], ["好好好", 30], ["这都什么和什么啊，还不如直接不直播，熬一", 30], ["🐺考来了你们聊", 29], ["军哥的当务之急是看懂自己的攻略视频，如果看不懂自己视频不要发", 29], ["886886", 29], ["没办法，很复杂。血狼破军你做人真的可以", 29], ["森空岛一次，蕾缪安一次，合约一次，你也三次背叛是吧，节奏一哥", 28], ["草！拿下！我们是苍蝇！！！onp", 28], ["666", 28], ["是什么垃圾节目，垃圾时间阿，看你一个大男", 28], ["后面再直播打个成绩，好有个节目看，这现在", 28], ["哈哈哈哈哈", 27], ["毒切片", 27], ["就转转桑", 27], ["哈哈", 27], ["还有变态的轻哼", 27], ["我一个狼黑都听哭了😂，你们一点共情能力没有吗", 27], ["你能先把这几天杀的人放出来吗？兄弟们都白死了？", 27], ["哈哈哈", 27], ["咦 这都有米收", 27], ["谷番呢", 27], ["切割了", 27], ["只捐这一场吗？昨天节奏sc不捐美美收米，想收米大大方方收", 27], ["军哥：为什么人生不能倒转，我还想回到狼母的怀里喝奶奶", 27], ["这里是泪点", 27], ["开门", 26], ["人在屏幕前扭扭捏捏，时不时传来一个叹息，", 26], ["能不能好好说话？", 26], ["狼神顶住！撑过这波就可以继续岁月史书谁提禁谁言堵谁嘴了！哦对了狼爸FQ！！", 26], ["什么时候无职转生什么时候忍法帖", 26], ["尬", 26], ["😋好多米😋好爽😋😋好多米😋好爽😋😋好多米😋好爽😋", 26], ["太变态了", 26], ["把观众米捐出去给自己洗白？[花]笑鼠了", 26], ["好多米😋好爽😋好多米😋好爽😋好多米😋好爽😋", 26], ["llppqhh", 26], ["清者自清", 26], ["哎", 25], ["懦", 25], ["也 好多米收 也 好多米收 也 好多米收", 25], ["真的吗", 25], ["继续不念sc", 25], ["😋好多米😋好爽😋😋好多米😋好爽😋", 24], ["大大方方收米", 24], ["fvv", 24], ["笑", 24], ["我要车累了，狼考能不能上场考一下，我想看南通丑态（喜欢大肥区（这是爱称", 24], ["sc爆了", 24], ["考子来了", 24], ["很复杂没办法", 24], ["SC知道自己想做公益吗？SC知道自己想做公益吗？SC知道自己想做公益吗？", 24], ["还有狼考子说为什么要你替他们道歉呢你怎么想", 24], ["sc自己想做公益吗？拿sc的钱做公益？不是原路退回再捐同数值？", 23], ["不赖", 23], ["公式", 23], ["我要车累了，狼考能不能上场考一下，我想看南通丑态", 23], ["笑了", 23], ["hide", 22], ["很复杂，没办法", 22], ["就这？", 22], ["明日方舟哪个术士最厉害军哥", 22], ["呵呵", 22], ["无敌了", 22], ["哇哦", 22], ["只捐这一场吗？前几天的节奏sc不捐？想收米大大方方收[汤圆]", 22]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
