@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 瘾大偷玩一把 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>瘾大偷玩一把 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-07-28 12:48</span>
+      <span>弹幕数: 13482</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["说不出话", 724], ["？", 696], ["睡觉", 193], ["你是？", 130], ["0", 97], ["榜呢", 89], ["可惜", 88], ["好结局", 81], ["捏柿子", 78], ["学", 75], ["小兔喝奶", 70], ["糯", 56], ["孕", 56], ["爆了", 55], ["好好好", 48], ["还真是", 42], ["?", 42], ["886886", 41], ["区", 40], ["dnys", 40], ["？？？", 39], ["癔症", 38], ["运", 38], ["懂你意思", 36], ["吹哨", 36], ["我知道了", 36], ["饿", 35], ["886", 34], ["退了re0", 31], ["随便打", 29], ["考", 27], ["坏结局", 27], ["蠕动", 27], ["浪神", 27], ["超大杯", 26], ["sb", 26], ["吸吸吸", 26], ["浪出", 24], ["你是主播", 24], ["往里进往里进", 23], ["尿了没", 23], ["往里进", 22], ["开门", 22], ["羞死了", 22], ["自己退", 21], ["榜呢榜呢", 19], ["何意啊", 19], ["藏好了", 19], ["-10", 19], ["004", 19], ["灯丝", 19], ["哈哈大笑", 18], ["325", 18], ["果父", 18], ["玩对了", 18], ["扫", 17], ["喂喂喂", 17], ["懦", 17], ["全对", 17], ["🌽", 16], ["榜呢？", 16], ["水图", 16], ["八戒", 16], ["说藏话了", 15], ["你是", 15], ["力竭了", 15], ["鬼图", 15], ["？？", 14], ["玉米", 14], ["990", 14], ["支支吾吾", 14], ["难道说", 13], ["大大方方", 13], ["算你输了", 13], ["不考", 12], ["对的对的", 12], ["吃力", 12], ["再见了", 12], ["马头nb", 11], ["对咯", 11], ["才八点", 11], ["软柿子", 11], ["看看私信", 11], ["全对在哪", 10], ["好想玩口口", 10], ["大大方方削", 10], ["1", 10], ["乐", 10], ["哒哒哒哒哒", 10], ["马头牛逼", 10], ["-1", 10], ["抽卡", 10], ["还不发榜我阉了你🐰🐦🈚😡还不发榜我阉了你🐰🐦🈚😡还不发榜我阉了你", 9], ["模组", 9], ["下一把", 9], ["老霸道了", 9], ["高高在上", 9], ["不赖", 9], ["哈哈哈哈哈", 9], ["刷", 9], ["退了鬼灭", 9], ["不要不要", 9], ["浪花", 9], ["退了空境", 8], ["中午好", 8], ["瘾这么大？", 8], ["已取餐", 8], ["7330", 8], ["穴", 8], ["很遗憾", 8], ["哈哈哈", 8], ["老妈到了", 8], ["马头", 8], ["全错", 8], ["看力竭了", 8], ["哈哈哈哈", 8], ["定制", 7], ["🌊🌊🌊🌊", 7], ["打得过吗", 7], ["军奴苔藓", 7], ["🌊：0", 7], ["fw", 7], ["我顶死你", 7], ["马头来了", 7], ["没绷住", 7], ["维黑", 7], ["马头神了", 7], ["退了群星", 7], ["战未来", 7], ["赖着不死", 7], ["稳健在哪", 7], ["涸泽而渔", 7], ["330", 7], ["雨神", 6], ["hide", 6], ["伏笔", 6], ["这么早", 6], ["-9", 6], ["赌", 6], ["军奴板藤", 6], ["何意味", 6], ["军值回归", 6], ["iceb", 6], ["学到了", 6], ["你是?", 6], ["哈哈哈哈哈哈哈哈哈", 6], ["嘴脸", 6], ["退了口口", 6], ["00", 6], ["退了红警", 6], ["goat", 6], ["发狂了", 6], ["八神", 6], ["马头来", 6], ["🌊🌊🌊", 6], ["对了", 6], ["亏了", 6], ["16150", 6], ["呃呃", 6], ["晚上还播吗", 6], ["可惜了", 5], ["严查", 5], ["抢", 5], ["八出", 5], ["极限", 5], ["打", 5], ["我榜呢", 5], ["？你是", 5], ["400", 5], ["来了", 5], ["军值", 5], ["大大方方下一把", 5], ["不会", 5], ["浪花：0", 5], ["还行", 5], ["退了gbc", 5], ["伏笔了", 5], ["花辞树", 5], ["大大方方追猎", 5], ["蹭胜率来了", 5], ["动手", 5], ["小团体拉我", 5], ["卖玉米", 5], ["大大方方吸", 5], ["什么时候发榜", 5], ["再见了连胜", 5], ["区区", 5], ["舒服了", 5], ["要打就来", 5], ["说脏话了", 5], ["红神", 5], ["1490", 5], ["算你过了", 5], ["唐", 5], ["没办法", 5], ["爆", 5], ["望黑", 4], ["就在今天", 4], ["要就给", 4], ["菏泽", 4]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
