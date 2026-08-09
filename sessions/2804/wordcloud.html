@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看罗神港诡 / 玩玩方舟新模式 / 和四大恶贼联动新模式 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看罗神港诡 / 玩玩方舟新模式 / 和四大恶贼联动新模式 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-08-09 19:01</span>
+      <span>弹幕数: 13798</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 513], ["说不出话", 473], ["睡觉", 176], ["收", 112], ["爆了", 95], ["开盘", 94], ["白子说话", 82], ["区", 79], ["黑子说话", 61], ["喂喂喂", 54], ["小兔喝奶", 53], ["只会这个", 48], ["捏柿子", 47], ["吹哨", 46], ["白子桂霞", 44], ["正义必胜", 43], ["懂你意思", 41], ["?", 36], ["羞死了", 35], ["学", 33], ["点亮", 32], ["难道说", 31], ["？？？", 27], ["逮捕", 27], ["运", 26], ["孕", 26], ["血泪", 25], ["dnys", 23], ["军奴", 22], ["扫", 22], ["好好好", 21], ["我知道了", 21], ["不要不要", 20], ["鸟神", 20], ["黑子桂霞", 20], ["神了", 20], ["挑战失败", 20], ["蓟县", 19], ["收！", 19], ["何意啊", 19], ["饿", 19], ["白子尿了没", 18], ["游龙", 18], ["886886", 18], ["哈哈大笑", 18], ["全军出击", 18], ["右上角", 18], ["白子跪下", 18], ["灯丝", 18], ["区区", 17], ["大大方方双果冻", 17], ["讨口子", 17], ["盘", 16], ["爆", 16], ["操作你", 16], ["鸡神", 15], ["刷怪了", 15], ["1", 15], ["卑鄙", 14], ["自己画", 14], ["🦐", 14], ["拿下", 14], ["可惜", 14], ["很遗憾", 13], ["开", 13], ["可爱捏", 12], ["听见你说", 12], ["看看", 12], ["fw", 12], ["尿了没", 12], ["有格调", 12], ["哈哈哈", 11], ["收到", 11], ["有", 11], ["大大方方双花", 11], ["色盲", 11], ["喜欢睡", 11], ["黑幕", 10], ["白子还能说话吗", 10], ["超大杯", 10], ["开睡", 10], ["操作", 10], ["查寝", 10], ["鸟神神了", 10], ["黑子尿了没", 10], ["886", 10], ["有的", 10], ["听得见", 9], ["极限", 9], ["回归基本功", 9], ["🤡", 9], ["大花神神", 9], ["什么比赛", 9], ["不对不对", 9], ["？？", 9], ["打最后一队来", 9], ["轮椅", 9], ["往里进", 9], ["白子气不气", 8], ["不考", 8], ["来个码", 8], ["🩸👁️🍉👁️🩸", 8], ["赔率厨出击", 8], ["棋神", 8], ["太变态了", 8], ["还真是", 8], ["-30", 8], ["🩸👁🍉👁🩸", 8], ["拉扯", 8], ["羊神", 8], ["舒服了", 8], ["呃呃", 8], ["还有白子吗", 7], ["鸡哥神了", 7], ["往里进往里进", 7], ["自己抓", 7], ["才八点", 7], ["甲哥市区", 7], ["桂霞", 7], ["啊？", 7], ["棋神神了", 7], ["打最后一队的来", 7], ["考", 7], ["开门", 7], ["要自己画", 7], ["甜甜甜", 7], ["黑子跪下", 7], ["712", 7], ["大大方方睡", 7], ["鸡神神了", 7], ["蜥蜴", 7], ["就这个了", 7], ["大军", 7], ["白子服了没", 7], ["已取餐", 6], ["只能自己画", 6], ["不是啊", 6], ["老叟戏顽童", 6], ["别", 6], ["24*24", 6], ["大大方方果冻", 6], ["第三排第三个", 6], ["中杯", 6], ["bgm对了", 6], ["没绷住", 6], ["上ban位", 6], ["炮god", 6], ["白子还有币吗", 6], ["血狼破军前妻", 6], ["完了", 6], ["24x24", 5], ["脸色对了", 5], ["再见了凯小弟", 5], ["军怒", 5], ["区啊", 5], ["开盘开盘", 5], ["偷", 5], ["晚上好", 5], ["何审美", 5], ["ban果冻", 5], ["黑子服了没", 5], ["果冻神了", 5], ["军奴地图", 5], ["还有炮", 5], ["查寝来", 5], ["喜欢睡觉", 5], ["🩸🍉🩸", 5], ["色盲军哥", 5], ["睡觉流", 5], ["双果冻", 5], ["1234", 5], ["保护a大", 5], ["24", 5], ["黑子说话！", 5], ["小巧思", 5], ["好看在哪", 5], ["？？？？", 5], ["内鬼", 5], ["一号", 5], ["攻速", 5], ["白字说话", 5], ["保护双马尾", 5], ["太黄了", 5], ["结算", 5], ["不公平", 5], ["天黑了", 5], ["可爱", 5], ["可爱在哪", 5], ["可是军军也🥺……太菜了吧😅", 5], ["哈哈哈哈哈", 5], ["白子灯丝", 4], ["???", 4], ["黑子伏", 4], ["草拿下", 4], ["白子往外出", 4], ["都会出", 4], ["对了对了", 4], ["爽吃", 4], ["跪下", 4], ["穴", 4]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
