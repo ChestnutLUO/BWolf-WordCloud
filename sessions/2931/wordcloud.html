@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 玩把肉鸽 然后单机 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>玩把肉鸽 然后单机 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-09-19 18:59</span>
+      <span>弹幕数: 22908</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 1036], ["说不出话", 858], ["睡觉", 366], ["军哥我软脚了", 194], ["爆了", 180], ["收到", 136], ["886886", 108], ["我的我的", 104], ["全军出击", 103], ["军哥我怕", 95], ["?", 91], ["扫", 91], ["小兔喝奶", 86], ["0", 85], ["还真是", 82], ["军哥我死了", 71], ["无军", 67], ["dnys", 63], ["灯丝", 61], ["尿了没", 61], ["羞死了", 59], ["往里进往里进", 58], ["区", 57], ["吹哨", 53], ["军哥我不想死", 53], ["玩对了", 52], ["？？？", 50], ["好结局", 50], ["倒转", 49], ["甜甜甜", 49], ["懂你意思", 47], ["不要不要", 45], ["倒转区", 44], ["fw", 43], ["886", 43], ["才八点", 42], ["-1", 38], ["何意啊", 37], ["大军", 35], ["你是主播", 35], ["军哥我好痛", 34], ["🦐", 34], ["升本", 33], ["饿", 33], ["往里进", 33], ["记录在案", 31], ["我知道了", 30], ["退了单机", 30], ["什么单机", 28], ["喂喂喂", 27], ["skip", 27], ["往外出往外出", 27], ["超大杯", 27], ["你是？", 26], ["-3", 25], ["-2", 25], ["捏柿子", 24], ["更怕了", 24], ["余额不足哦", 23], ["杀", 23], ["你的你的", 22], ["水图", 22], ["往外出", 22], ["+50", 21], ["-5", 21], ["军哥我尿了", 20], ["军哥我跑了", 20], ["虾", 19], ["我吗", 19], ["抽卡", 19], ["军矿", 19], ["可惜", 18], ["开门", 18], ["没办法，很复杂", 17], ["学", 17], ["孕", 17], ["癔症", 17], ["毒指挥", 17], ["军哥我倒了", 17], ["听不见", 16], ["上面", 16], ["军哥我打的帅吗", 16], ["军衡", 16], ["军哥我投敌了", 16], ["糯", 16], ["智力有问题", 16], ["军奴", 16], ["没办法很复杂", 16], ["军哥我好累", 15], ["#锈湖", 15], ["我干的", 15], ["veplay", 15], ["我软脚了", 15], ["我军败了", 14], ["合约", 14], ["军哥我不对空", 14], ["一只大军", 14], ["吸吸吸", 14], ["？？", 13], ["随便打", 13], ["哈哈哈", 13], ["卡卡卡", 13], ["贪", 13], ["军哥别送", 13], ["你甘心吗", 13], ["我咬死你", 13], ["军哥我好疼", 12], ["军哥我好怕", 12], ["哈哈大笑", 12], ["倒转区来了", 12], ["没有", 12], ["爆", 12], ["路边", 12], ["合约来了", 12], ["我来我来", 12], ["喜欢贪", 12], ["🐷", 12], ["没办法", 11], ["ve play", 11], ["运", 11], ["山上", 11], ["1", 11], ["军哥我投降了", 11], ["军屯垦", 11], ["甲乙丙丁", 11], ["军哥我来了", 11], ["2", 11], ["军哥我家没了", 11], ["什么游戏", 11], ["呼呼呼", 10], ["军哥我似了", 10], ["确实", 10], ["危机合约", 10], ["m", 10], ["-6", 10], ["重开", 10], ["军哥我好饿", 10], ["军哥我好冷", 10], ["好好好", 10], ["ve玩耍", 10], ["别带", 10], ["果实型藏品", 10], ["fifa", 10], ["嚼嚼嚼", 10], ["好我射", 9], ["那完了", 9], ["塔防", 9], ["军哥你好菜", 9], ["军哥我跑路了", 9], ["aoe", 9], ["军哥，我软脚了", 9], ["很遗憾", 9], ["军哥我帅吗", 9], ["饿啊", 9], ["左上", 9], ["退了游戏人生", 9], ["自己退", 9], ["dps7.99的是血狼破军！", 9], ["军哥我臭了", 9], ["全对", 8], ["杀杀杀", 8], ["🐖", 8], ["软脚了", 8], ["那就是要", 8], ["一脚", 8], ["军哥我军饷呢", 8], ["弓箭手长按R", 8], ["呃呃", 8], ["我的吧我的吧", 8], ["好", 8], ["军哥我被炸死了", 8], ["登山", 8], ["军哥我想回家", 8], ["晚安", 8], ["军哥我工资呢", 8], ["倒转了", 8], ["军哥我软胶了", 8], ["smbdj", 8], ["浪出", 8], ["别动我电脑", 7], ["开智了", 7], ["无重启：0", 7], ["你是", 7], ["大肥兔", 7], ["军哥我怕死", 7], ["不会", 7], ["飞刻", 7], ["你可是狼啊", 7], ["白色兔头的是血狼破军！", 7], ["全军出击了", 7], ["敌人阵型已乱，随我杀！", 7], ["我砍，我再砍", 7], ["这个好玩", 7], ["口口", 7], ["这下看懂了", 7], ["222", 7], ["军哥我疼", 7], ["德黑", 7], ["严查", 7], ["军哥我要死了", 7]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
