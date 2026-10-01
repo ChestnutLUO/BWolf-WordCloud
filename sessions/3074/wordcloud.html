@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 噔噔蹬蹬 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>噔噔蹬蹬 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-10-01 23:40</span>
+      <span>弹幕数: 4394</span>
+      <span>词条数: 132</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 222], ["说不出话", 115], ["睡觉", 80], ["爆了", 61], ["帅", 42], ["军奴", 37], ["小兔喝奶", 36], ["可惜", 34], ["?", 31], ["吹哨", 23], ["剧本", 22], ["886886", 19], ["尿了没", 17], ["全力军", 16], ["陌生", 16], ["口口", 15], ["捏柿子", 15], ["你是那四个字吗", 15], ["学", 15], ["kd暴涨中", 13], ["军怒", 11], ["还真是", 11], ["886", 11], ["没绷住", 10], ["子弹", 10], ["灯丝", 10], ["超大杯", 10], ["豪", 10], ["比哥太坏了", 10], ["不赖", 9], ["尿了", 9], ["扣子弹", 9], ["饿", 9], ["准", 9], ["何意啊", 8], ["杀", 7], ["责任", 7], ["够军", 7], ["夸美了", 7], ["报仇！", 7], ["口环", 7], ["神了", 6], ["退了ow", 6], ["马", 6], ["吃力", 6], ["泪目", 6], ["付费跑刀", 6], ["好杀", 6], ["考", 6], ["1", 6], ["我知道了", 5], ["全军出击", 5], ["帅帅帅", 5], ["开卡", 5], ["小护水平", 5], ["再来一把", 5], ["没想到吧", 5], ["问你呢", 5], ["🤖：血....狼破军......是...小护.......", 5], ["护一把", 5], ["死仇时代的恨意", 5], ["尽力了", 5], ["听美了", 5], ["？？？", 5], ["比哥", 5], ["顺", 4], ["狼神", 4], ["fifa游戏", 4], ["军哥替我报仇", 4], ["问题是军哥真的有小护水平啊。。。", 4], ["等死", 4], ["这把没货", 4], ["军神", 4], ["栏杆大残", 4], ["地震了", 4], ["看看kd", 4], ["业绩护", 4], ["没头", 4], ["小护", 4], ["哈哈大笑", 4], ["寻宝来了", 4], ["丢包吧", 4], ["冷暴力", 4], ["剧如本", 4], ["太性情了", 3], ["领域展开", 3], ["抱头鼠窜", 3], ["神人", 3], ["趣味生煎", 3], ["tmd", 3], ["意气风发啊军哥", 3], ["赛马", 3], ["我咬死你", 3], ["雷达", 3], ["沉默", 3], ["才八点", 3], ["哈哈哈哈哈哈", 3], ["杀爽了", 3], ["圣人", 3], ["刀锤哥的来了", 3], ["kd又增加了", 3], ["大大方方", 3], ["你在干嘛", 3], ["比哥来了", 3], ["手电为什么不关", 3], ["ittv", 3], ["晚安", 3], ["没收", 3], ["癔症", 3], ["🐎", 3], ["爆！", 3], ["可惜了", 3], ["kd 又增加了", 3], ["队友不是人", 3], ["我也想问", 3], ["对面睡着了", 3], ["黑大帅！", 3], ["问题是军哥确实有小护水平啊", 3], ["老板", 3], ["0", 3], ["小户水平", 3], ["难道军哥真是小护", 3], ["队友爆了", 3], ["哈哈哈哈哈", 3], ["空悲切", 3], ["游龙", 3], ["战斗", 3], ["军哥给我报仇", 3], ["演员", 3], ["透到了", 3], ["吞食一些针剂", 3], ["他们走不了了", 3]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
