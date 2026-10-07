@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 遗忘之海【浪就对了杯】主播娱乐赛塑料形态 / 随便聊聊 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>遗忘之海【浪就对了杯】主播娱乐赛塑料形态 / 随便聊聊 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-10-07 17:52</span>
+      <span>弹幕数: 57514</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">网游-遗忘之海</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 2064], ["说不出话", 1784], ["爆了", 1632], ["不尬", 1174], ["睡觉", 1057], ["尿了没", 673], ["浪就完事了，我们会赢的！", 662], ["军哥", 572], ["一哥", 327], ["血狼老师", 309], ["尬", 206], ["学", 200], ["?", 199], ["尿了", 197], ["重尬", 185], ["一哥一哥", 169], ["商务", 152], ["沉默", 150], ["晕晕", 143], ["毒商单", 129], ["小兔喝奶", 124], ["？？？", 122], ["孕", 120], ["羞死了", 114], ["冷暴力", 113], ["喂喂喂", 110], ["123456", 107], ["dnys", 105], ["懂你意思", 104], ["开门", 101], ["口口", 100], ["老师", 99], ["kkrj", 97], ["点你呢", 93], ["我们是冠军", 86], ["看看人家", 84], ["中杯", 82], ["二哥", 80], ["别别别", 77], ["能折现吗", 75], ["爆", 71], ["-5", 71], ["运", 71], ["捏柿子", 70], ["看得见", 69], ["灯丝", 69], ["skip", 69], ["吹哨", 62], ["区", 60], ["收到", 56], ["bbbb", 55], ["llppqhh", 53], ["支支吾吾", 53], ["+5", 53], ["哈哈哈哈", 52], ["何意啊", 52], ["sc爆了", 52], ["穴", 51], ["剧本", 50], ["没绷住", 49], ["🤖：血狼老师这波操作666", 49], ["这游戏好有意思，入坑了", 48], ["还未尬到", 48], ["超大杯", 47], ["呃呃", 47], ["哈哈大笑", 46], ["听得见", 46], ["爆了爆了", 46], ["趣味生煎", 45], ["886886", 43], ["饿", 43], ["？？", 42], ["会赢的", 41], ["是的", 41], ["我的我的", 41], ["甲方脸色对了", 41], ["没爆", 41], ["暴力炸", 39], ["无人在意", 38], ["不敢说话", 38], ["军哥nb", 38], ["还有？", 38], ["哈哈哈", 37], ["毒攻略", 37], ["zdjd", 37], ["只会这个", 37], ["军哥牛逼", 37], ["专业", 37], ["往外出往外出", 36], ["爆爆爆", 36], ["甲方:绝望的看弹幕", 36], ["想想周哥会怎么做", 36], ["军哥军哥", 36], ["糯", 35], ["你是？", 35], ["温蒂：温米原来你也喜欢玩回合制游戏呀，怎么不早说，我教你啊", 35], ["不是啊", 35], ["fw", 35], ["黏住", 34], ["贴吧见", 34], ["呃", 34], ["毒左手", 33], ["我去，这个游戏太有意思了", 33], ["神了", 33], ["大主播了", 33], ["到！", 33], ["好尬", 33], ["意气风发啊军哥", 32], ["还有", 32], ["也够", 32], ["省流：玩dot队 玩的卡鹅海藿", 31], ["不尬不尬", 31], ["耍大牌", 30], ["什么意思", 29], ["【HLTV】🐇弑旧时友！ 军哥声称已代替魔术师指挥123456", 29], ["软糯", 29], ["感谢血狼老师的推荐，游戏精美益智，已经垂直入坑。", 29], ["big", 28], ["祝大麦", 28], ["接商单的时候就像被卡在洗衣机里的女主无暇顾此这个时候兄弟们就疯狂串疯狂输有感觉吗", 28], ["感觉不如123456", 28], ["毒游戏", 27], ["我来投屏", 27], ["尬尬尬", 27], ["我们是冠军！", 27], ["你真会啊", 26], ["军哥尿了没", 26], ["我知道了", 26], ["🐰：菜b，我自动都比你们高", 26], ["不说话装高手", 26], ["lxt:串不动了....(绝望的看直播)", 26], ["思路构建", 26], ["区区", 25], ["你一句播商单，我看了两小时的三选一", 25], ["暗改", 25], ["甲方脸色不对了", 24], ["退了雀魂", 24], ["🐰：绝望的开箱子", 24], ["高手", 24], ["军哥人家直播间一直抽奖都没有你同接高，弹幕多，你的上单效果太强劲了甲方肯定很高兴", 24], ["🍟：（绝望的搜索第一厉害的回合游戏攻略者）", 24], ["哈哈哈哈哈", 23], ["一脚", 23], ["毒塑料", 23], ["倒转区", 23], ["窝里横", 22], ["甲方：（查询最多弹幕）🐰老师，123456是什么意思", 22], ["冠军", 22], ["？？？？", 21], ["没办法", 21], ["啊？", 21], ["军哥吗", 21], ["大主播", 21], ["谁做的游戏", 21], ["难道说", 21], ["甲方：便宜没好货，下次还是找🦔吧......", 21], ["无敌了", 20], ["一哥！", 20], ["深渊吗", 20], ["-6000", 20], ["膨胀神游", 20], ["血狼破军到了", 20], ["ctbz", 20], ["统一口径", 20], ["🐰：智力有问题", 20], ["血狼破军！", 19], ["深渊？", 19], ["太变态了", 19], ["还真是", 19], ["拿下", 19], ["雪狼老师", 19], ["力竭了", 19], ["我不敢看了", 19], ["👖：下雨了", 19], ["忘记一切", 18], ["🍟:我觉得🦔就不会这么蠢......", 18], ["无敌了无敌了", 18], ["军哥怎么不说话", 18], ["🐇：什么意思", 18], ["倒转了", 18], ["一句狼神播商单了让我看了两个小时三选一…", 18], ["🤖：血狼老师这波操作66", 18], ["听不懂", 18], ["48", 18], ["智力有问题", 18], ["12：3456", 18], ["🐰：不敢说话", 17], ["大鬼、北极熊、凉哈皮都玩过明日方舟，所以这群人里军哥才是咖位最大的，你们别搞错了", 17], ["好好看的角色[哇]", 17], ["军哥你看右上角的♾️是不是自动战斗", 17], ["🍟：🦔🐲🐩🦊是谁？", 17], ["好", 17], ["真的假的", 17], ["艰难的抉择，由此而生的三选一，教会你播商单的是。。。", 17], ["黑幕", 17], ["可以折现吗", 17], ["甲方：便宜没好货", 16], ["已叫军哥", 16], ["往外出", 16], ["1234", 16]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
