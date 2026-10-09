@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 看看新干员数值 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>看看新干员数值 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-10-09 19:01</span>
+      <span>弹幕数: 22349</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 988], ["说不出话", 530], ["睡觉", 229], ["爆了", 221], ["好结局", 143], ["扫", 123], ["懂你意思", 118], ["你是主播", 115], ["dnys", 105], ["?", 104], ["随便打", 90], ["抽卡", 90], ["孕", 71], ["飞", 69], ["运", 61], ["-1", 58], ["小兔喝奶", 58], ["吸吸吸", 54], ["暴力", 54], ["玩对了", 52], ["验尸", 45], ["吹哨", 45], ["哈哈大笑", 44], ["还真是", 42], ["可惜", 41], ["喂喂喂", 40], ["何意啊", 40], ["坏结局", 40], ["羞死了", 40], ["？？？", 40], ["收到", 38], ["少人？", 38], ["捏柿子", 37], ["苦苦苦", 35], ["别带", 34], ["饿", 34], ["哈哈哈", 33], ["烂轴", 33], ["甜甜甜", 33], ["不敢", 31], ["糯", 31], ["区", 30], ["刚来，什么杯", 30], ["癔症", 29], ["克黑", 26], ["886886", 26], ["学", 25], ["飞八", 25], ["紫色节点爱好者", 24], ["-2", 24], ["浪神", 24], ["相信主角", 24], ["呼呼呼", 23], ["刚来什么杯", 23], ["不抽取关", 22], ["很遗憾", 22], ["藏好了", 22], ["我的我的", 21], ["火来了", 21], ["主角呢", 21], ["？？", 21], ["什么杯", 20], ["超大杯", 20], ["毁号了", 20], ["哈哈", 20], ["甲哥爆了", 20], ["吸", 20], ["灯丝", 20], ["你们觉得呢", 19], ["哈哈哈哈", 19], ["阿一古", 19], ["大大方方飞", 18], ["马头", 18], ["神了", 18], ["暴力干", 18], ["下一把", 17], ["商店", 17], ["自己退", 17], ["往里进往里进", 17], ["水图", 17], ["大大方方", 17], ["修了", 17], ["追忆", 16], ["飞吧", 16], ["喷", 16], ["取关了", 16], ["爆", 16], ["fw", 16], ["-100", 16], ["赌", 16], ["飞飞飞", 16], ["-50", 16], ["难道说", 16], ["好轴", 15], ["善意对比", 15], ["bgm对了", 15], ["主角黑", 14], ["skip", 14], ["追忆来了", 14], ["全对", 14], ["火杆也是火", 14], ["再见了树小弟", 14], ["刷", 14], ["想想罗哥会怎么做", 14], ["0", 14], ["确实", 13], ["我知道了", 13], ["一脚", 13], ["不赖", 13], ["抽", 13], ["886", 13], ["给", 12], ["马头来", 12], ["忘记一切", 12], ["主角在干嘛", 12], ["老妈到了", 12], ["damedane", 12], ["veplay", 12], ["退役", 11], ["暴力莎莎", 11], ["只会这个", 11], ["砍树", 11], ["好", 11], ["发狂了", 11], ["数值", 11], ["做梦", 11], ["退了怪猎", 11], ["吃力", 10], ["退了卫", 10], ["要打就来", 10], ["gxyy", 10], ["不装了", 10], ["不抽卡取关", 10], ["ve play", 10], ["-6", 10], ["南亭的钥匙", 10], ["花辞树", 10], ["萨一把", 10], ["fifa", 10], ["主角神了", 10], ["倒转了", 10], ["谁是主角", 10], ["往里进", 10], ["趣味生煎", 9], ["50分", 9], ["对的对的", 9], ["阿一占", 9], ["毒攻略", 9], ["呃呃", 9], ["算你输了", 9], ["打", 9], ["八", 9], ["对了", 9], ["对咯", 9], ["大大方方下一把", 9], ["一刀", 9], ["酒狗？", 9], ["玉米", 9], ["那就是没有", 8], ["退了mujica", 8], ["不会", 8], ["留不住？", 8], ["卖了", 8], ["大飞", 8], ["区区", 8], ["游戏结束", 8], ["火杆", 8], ["给给", 8], ["哈哈哈哈哈哈", 8], ["大果", 8], ["+50", 8], ["这下看懂了", 8], ["主角来了", 8], ["听得见", 8], ["走了", 8], ["主角是谁", 8], ["帅", 8], ["支支吾吾", 8], ["smbdj", 8], ["你又不是罗哥那样的高手", 8], ["对喽", 8], ["主角是洁哥吗", 8], ["新神已至", 8], ["紫色节点", 8], ["走", 8], ["手快全拿了", 7], ["飞8", 7], ["冰冰冰", 7], ["？？？？", 7], ["没办法，很复杂", 7], ["赚了", 7], ["魔风波", 7], ["飞不期", 7], ["军藏思维", 7], ["真的假的", 7], ["原地坐下", 7], ["拉完了", 7], ["毒推荐", 7], ["浪出", 7], ["大大方方退", 7]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
