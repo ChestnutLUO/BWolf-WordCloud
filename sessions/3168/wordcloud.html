@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 七点联动yapyap | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>七点联动yapyap 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-10-11 18:37</span>
+      <span>弹幕数: 17455</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 1706], ["说不出话", 853], ["爆了", 680], ["睡觉", 237], ["?", 178], ["甜甜甜", 167], ["扫", 95], ["fw", 91], ["zpnb", 79], ["羞死了", 77], ["吹哨", 72], ["小兔喝奶", 70], ["爆", 65], ["工地英语", 62], ["区", 57], ["家乡话", 56], ["饿", 56], ["886886", 55], ["好结局", 50], ["？？？", 47], ["llppqhh", 46], ["口口", 45], ["灯丝", 43], ["苦尽甘来", 41], ["喂喂喂", 38], ["799", 35], ["超大杯", 34], ["一脚", 29], ["害人精", 27], ["唐", 26], ["魔风波", 25], ["kkrj", 25], ["何意啊", 25], ["无敌了", 24], ["学", 24], ["？？", 23], ["炮炮屏障", 23], ["捏柿子", 22], ["886", 22], ["看看人家", 21], ["一哥你是糖", 21], ["站起来", 20], ["69", 20], ["懂你意思", 20], ["🐰：啊🔥啊🔥啊🔥啊🔥啊🔥啊🔥啊🔥啊🔥啊🔥啊🔥", 20], ["口口启动", 19], ["神了", 19], ["苦苦苦", 19], ["dnys", 19], ["龙岩", 19], ["呼呼呼", 18], ["好好好", 17], ["炮炮", 17], ["尿了没", 17], ["还真是", 17], ["哈哈哈哈", 17], ["太变态了", 16], ["我知道了", 16], ["爱你甲哥", 16], ["飞吧", 16], ["不是啊", 15], ["不要不要", 15], ["恩人", 15], ["卡卡卡", 15], ["龙岩尖叫", 15], ["dog", 15], ["一哥你是唐", 15], ["生疼", 15], ["smbdj", 14], ["可惜", 14], ["哈哈哈", 14], ["严查", 13], ["癔症", 13], ["倒转区", 13], ["偷袭", 13], ["马", 12], ["听见你说", 12], ["踩头", 12], ["不播就丨", 12], ["晚上好", 11], ["？？？？", 11], ["消音麦神了", 11], ["变鱼", 11], ["发狂了", 11], ["烫", 11], ["软脚了", 11], ["二甲", 10], ["偷喝", 10], ["真棒", 10], ["软脚", 10], ["烧", 10], ["再见了狼小弟", 10], ["吸血", 10], ["1", 9], ["没办法", 9], ["魔丸", 9], ["没绷住", 9], ["飞舞", 9], ["还有人类吗", 9], ["呃呃", 9], ["若只", 9], ["只会这个", 9], ["路边", 9], ["万物生疼", 9], ["雨爱", 9], ["启动", 9], ["吸吸吸", 9], ["笑死我了", 8], ["手慢无", 8], ["一刀", 8], ["糖", 8], ["寄了", 8], ["区区", 8], ["sl", 8], ["阿一古", 8], ["麻瓜", 8], ["0国语言拥有者", 8], ["🐉骨", 8], ["魔封波", 8], ["捕甲", 8], ["骇人鲸", 7], ["呃呃呃", 7], ["只炮牛逼", 7], ["少人？", 7], ["补甲", 7], ["🦐", 7], ["魔风波！", 7], ["龙", 7], ["谁在说话", 7], ["玛卡巴卡", 7], ["玩对了", 7], ["痛", 7], ["智力没问题", 7], ["善意引导", 7], ["袅袅", 6], ["啊啊啊啊啊啊啊啊啊啊啊", 6], ["hjg跪下", 6], ["地上", 6], ["卡比", 6], ["哈哈大笑", 6], ["啊啊啊啊啊啊啊啊", 6], ["已到账", 6], ["哈哈哈哈哈哈哈", 6], ["一哥溺死", 6], ["很遗憾", 6], ["2", 6], ["消音了", 6], ["你是？", 6], ["罕见", 6], ["贪", 6], ["豪", 6], ["换大盏", 6], ["arkdog", 6], ["黑大帅口人了", 6], ["高高在上", 6], ["夹", 6], ["别别别", 6], ["耻辱下播", 6], ["甲哥哥", 6], ["帅", 6], ["-2", 6], ["敷衍", 6], ["iceb", 6], ["奥术？", 6], ["启动！", 6], ["配了", 6], ["爆爆爆", 6], ["谁在鬼叫", 6], ["xlpj跪下", 6], ["逗逗你的呀", 6], ["考", 6], ["好机会", 6], ["啊啊啊啊啊啊啊", 5], ["虾", 5], ["飞起来", 5], ["gg", 5], ["kale", 5], ["大大方方sl", 5], ["救我是什么魔法", 5], ["倒转", 5], ["何口音", 5], ["蓟县", 5], ["口之翼", 5], ["别舔我是什么魔法", 5], ["退了口口", 5], ["甲哥爆了", 5], ["全军出击", 5], ["奥术", 5], ["明日方舟干的", 5], ["狼嚎", 5], ["当区", 5], ["音乐甲", 5], ["谁做的游戏", 5], ["确实", 5], ["一哥你死", 5], ["反观", 5], ["🐰：up道格...甲：智跑牛逼😋👍智跑牛逼😋👍智跑牛逼😋👍", 5], ["吃力", 5], ["逗逗你呀", 5], ["迷失", 5]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
