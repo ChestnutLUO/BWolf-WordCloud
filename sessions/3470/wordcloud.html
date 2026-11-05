@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 先抽卡然后合约 / 动画片时间到 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>先抽卡然后合约 / 动画片时间到 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-11-05 11:49</span>
+      <span>弹幕数: 57664</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 3758], ["说不出话", 2183], ["睡觉", 1075], ["甜甜甜", 889], ["扫", 850], ["难道说", 518], ["哦呼", 345], ["爆了", 318], ["?", 290], ["自己退", 286], ["不用看", 272], ["羞死了", 271], ["区", 215], ["缩影", 189], ["很遗憾", 180], ["好结局", 170], ["尿了没", 146], ["？？？", 145], ["我顶死你", 138], ["小兔喝奶", 131], ["空悲切", 118], ["dnys", 116], ["你甘心吗", 110], ["懂你意思", 108], ["千百次失败（血狼破军特写）", 99], ["人老酸", 98], ["饿", 94], ["还真是", 93], ["fw", 91], ["苦苦苦", 90], ["软脚了", 89], ["吹哨", 88], ["毁号了", 86], ["捏柿子", 84], ["军哥不受气了回树海吧！军哥不受气了回树海吧！军哥不受气了回树海吧！", 80], ["我的我的", 78], ["llppqhh", 76], ["难道说？", 75], ["老了就退网", 73], ["可惜", 73], ["登山", 70], ["1", 70], ["好好好", 69], ["何意啊", 68], ["倒转了", 68], ["哈哈哈", 67], ["一脚", 67], ["大大大", 65], ["军奴", 65], ["区区", 64], ["吓哭了", 64], ["给", 63], ["？？", 63], ["🐰：你是谁？ 🫧：我爱你 🐰：龙哥小号？ 🫧：我恨你 🐰：✈，一切都过去了", 62], ["灯丝", 62], ["无所谓在哪", 61], ["🎦 当前房间为轮播内容，同样精彩哦~", 58], ["可爱捏", 58], ["哈哈大笑", 57], ["对的对的", 57], ["好女孩", 56], ["尿了", 56], ["听见你说", 56], ["886886", 55], ["but look at the time", 53], ["你是？", 53], ["癔症", 52], ["学", 52], ["对了对了", 52], ["oi", 50], ["不对不对", 50], ["but", 49], ["燃出", 48], ["哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦😮哦", 47], ["好接", 47], ["阿一古", 45], ["才八点", 45], ["哈哈哈哈哈", 44], ["bgm对了", 43], ["发狂了", 43], ["军军一个以为自己很羊羊", 42], ["那就是有", 42], ["军哥你手疼不疼", 42], ["嗯嗯", 41], ["不然呢", 41], ["急了", 41], ["哈哈哈哈哈哈", 41], ["神了", 41], ["超大杯", 40], ["喂喂喂", 40], ["盒", 39], ["炮god给我杀", 39], ["军哥你手痛不痛", 39], ["我知道了", 39], ["开了", 38], ["你们就串血狼破军吧，等他抑郁了孤独地在街上流浪的时候，我就会像狗贩子一样把他套走", 38], ["坏结局", 38], ["再磨蹭，天就要黑了", 37], ["小军啊，你玩的这个叔看不懂，叔喜欢你哪个拿着2D小人到处乱放然后满屏火雨的游戏", 37], ["这谁做的游戏一哥都打不过？这谁做的游戏一哥都打不过？这谁做的游戏一哥都打不过？", 37], ["语气对了", 37], ["大区", 36], ["老了", 36], ["全对", 36], ["哈哈哈哈", 36], ["收到", 35], ["少人？", 35], ["听得见", 35], ["886", 35], ["绝不认输", 35], ["陀螺", 35], ["转转来了", 34], ["时间不够了", 34], ["可是军军", 34], ["不要不要", 33], ["又是类魂", 33], ["对咯", 33], ["玩对了", 33], ["飞起来", 33], ["齐出", 33], ["军哥我刚从军哥直播间过来，你猜怎么着，军哥打了这么久居然还没过，比军哥搞笑多了", 32], ["下一把", 32], ["抽陀螺", 32], ["我们是冠军", 32], ["齐神", 32], ["好低迷啊", 31], ["这就是lxt吵着要看的合约🥱😪😪", 31], ["小馋猫", 31], ["gg", 31], ["我已经编了七条烂梗没人复制粘贴了，但我并不气馁，因为有人打了七小时合约还没放弃", 31], ["退了石头门", 31], ["白忙活", 31], ["退了石纪元", 30], ["对了", 30], ["卧槽，血狼你真是人不可貌相，长相和技术完全是相反的！长得像猪头，技术像头猪", 29], ["老爸倒了", 28], ["够军", 28], ["这次真过了黑子说话！这次真过了黑子说话！这次真过了黑子说话！", 27], ["超绝四方体永远不会认输！", 27], ["小孩（21岁）老猪（28岁）老尼（29岁）军军（29岁）老汤（31岁）祀宝（162岁）", 27], ["-30", 27], ["老霸道了", 27], ["全吃", 27], ["忘记一切", 26], ["这狠人真无敌了，对面先露结果都架不住影子位", 25], ["拿下", 25], ["炮god😭刚刚人多😭现在我给您跪了我爹年纪大了难得进第四面你偶尔软一次脚没事的", 25], ["甲哥爆了", 25], ["我转死你", 24], ["当前房间为轮播内容，同样精彩哦~", 24], ["倒转", 24], ["烂尾", 24], ["kkrj", 24], ["盘点那些最令人遗憾的残局：1.broky vs sh1ro2.XANTARES vs TeSeS3.Bwolf vs 开天将", 24], ["你问我？", 24], ["齐圣", 23], ["豪", 23], ["无所谓", 23], ["别重复刷屏行吗，这样捣乱只会影响其他人的观看体验，还有，别拿这句刷", 22], ["别开诀二段大清空大招能量了呗", 22], ["就在今天", 22], ["支支吾吾", 22], ["？？？？", 21], ["转转给我杀", 21], ["冻河代打了,这把真不一样了！冻河代打了,这把真不一样了！冻河代打了,这把真不一样了", 21], ["确认", 20], ["大什么", 20], ["考试也＋1？面试也＋1？人生也＋1？喜欢＋1的人只能度过一个相对失败的人生 同意的＋1", 20], ["好舒服啊", 20], ["退了进会议退了进会议退了进会议", 20], ["大肥兔", 20], ["反观", 19], ["太变态了", 19], ["定制", 19], ["哦对了", 19], ["大什么？", 19], ["80", 19], ["🗿：科研家血狼破军，你的i前缀呢，真是学术不端", 19], ["没有", 19], ["舒服了", 19], ["叫牛魔", 19], ["哈哈", 19], ["🐷", 19], ["开门", 19], ["霸之意志", 18], ["完了", 18], ["千百次失败（血狼特写）", 18], ["超人", 18], ["善意引导", 18], ["天黑了", 18], ["今晚都是这个了", 18], ["软脚", 18], ["注意力惊人", 18], ["炮god杀", 18], ["呃呃", 17], ["er", 17], ["天已经黑了", 17], ["软柿子", 17], ["炮god", 17], ["亚洲剧情", 17]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
