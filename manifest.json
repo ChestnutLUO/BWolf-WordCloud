@@ -1,5 +1,60 @@
 [
   {
+    "session_id": 3559,
+    "room_id": 8432038,
+    "title": "玩玩狗运策略",
+    "area": "手游-明日方舟",
+    "start_time": "2026-11-12 18:16",
+    "end_time": "2026-11-13 02:08",
+    "duration": "7h51m",
+    "total_danmaku": 40551,
+    "wordcloud": true
+  },
+  {
+    "session_id": 3549,
+    "room_id": 8432038,
+    "title": "寻找最强播报终端",
+    "area": "手游-明日方舟",
+    "start_time": "2026-11-11 18:23",
+    "end_time": "2026-11-12 02:03",
+    "duration": "7h39m",
+    "total_danmaku": 37693,
+    "wordcloud": true
+  },
+  {
+    "session_id": 3532,
+    "room_id": 8432038,
+    "title": "优化下轮椅",
+    "area": "手游-明日方舟",
+    "start_time": "2026-11-10 13:28",
+    "end_time": "2026-11-11 00:51",
+    "duration": "11h22m",
+    "total_danmaku": 36335,
+    "wordcloud": true
+  },
+  {
+    "session_id": 3521,
+    "room_id": 8432038,
+    "title": "别BAN我远见",
+    "area": "手游-明日方舟",
+    "start_time": "2026-11-09 17:43",
+    "end_time": "2026-11-09 23:48",
+    "duration": "6h04m",
+    "total_danmaku": 17843,
+    "wordcloud": true
+  },
+  {
+    "session_id": 3518,
+    "room_id": 8432038,
+    "title": "别BAN我远见",
+    "area": "手游-明日方舟",
+    "start_time": "2026-11-09 13:51",
+    "end_time": "2026-11-09 17:43",
+    "duration": "3h51m",
+    "total_danmaku": 14917,
+    "wordcloud": true
+  },
+  {
     "session_id": 3502,
     "room_id": 8432038,
     "title": "卫戍协议倒转王",
