@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+<title>弹幕词云 - 卫一把然后看前瞻 / 终末地前瞻 / 奏术回战 | BWolf</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 16px 24px;
+  background: #252525;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.header-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e94560;
+}
+.header .meta {
+  font-size: 13px;
+  color: #8892b0;
+}
+.header .meta span { margin-left: 16px; }
+.area-tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #48c9b0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+.back-link {
+  color: #e94560;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+#wordcloud-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 600px;
+}
+.logo-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  opacity: 0.3;
+  width: 120px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="https://bwolf.work">
+    <img src="../../assets/logo.svg" alt="BWolf" class="header-logo">
+  </a>
+  <div>
+    <h1>卫一把然后看前瞻 / 终末地前瞻 / 奏术回战 弹幕词云</h1>
+    <div class="meta">
+      <span>2026-11-21 18:21</span>
+      <span>弹幕数: 96561</span>
+      <span>词条数: 200</span>
+      <span class="area-tag">手游-明日方舟</span>
+    </div>
+  </div>
+  <a class="back-link" href="../..">← 返回列表</a>
+</div>
+<div id="wordcloud-canvas"></div>
+<div class="logo-watermark"><img src="../../assets/logo.svg" alt="BWolf" width="120"></div>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"
+        integrity="sha384-u5MoeP7iId/1yQx8f8/zcqsP99YhxCZvFoH6oeDF83VKVEr453M7FTJwkVy6b0Jo"
+        crossorigin="anonymous"></script>
+<script>
+var wordData = [["？", 4463], ["爆了", 1856], ["说不出话", 1458], ["剧本", 1122], ["甜甜甜", 912], ["支支吾吾", 746], ["退票", 568], ["够军", 552], ["要打就来", 551], ["还真是", 529], ["狼神", 459], ["不尬", 451], ["?", 405], ["跪下", 402], ["妈妈", 389], ["skip", 388], ["考", 367], ["睡觉", 327], ["？？？", 313], ["糯", 313], ["你在直播里😰……那样说我的话🥺……你说生气吧😫……也不是特别生气😘", 280], ["灯丝", 279], ["口口", 277], ["如果当年✈对🐉说的第一句话是🐉神，那现在的巅峰会不会完全不一样。。。", 267], ["烂尾", 257], ["羞死了", 257], ["扫", 228], ["好结局", 223], ["少人？", 219], ["大大大", 212], ["捏柿子", 212], ["锐气", 209], ["懂你意思", 196], ["国产剧情", 179], ["爆", 177], ["桂霞", 168], ["糯了", 168], ["dnys", 164], ["区", 161], ["毒攻略", 158], ["发狂了", 157], ["尿了", 156], ["够考", 154], ["小兔喝奶", 149], ["孕", 146], ["llppqhh", 143], ["叙一把", 136], ["够菌", 134], ["尬", 132], ["重尬", 131], ["软脚了", 129], ["玩对了", 128], ["吹哨", 128], ["爆爆爆", 125], ["bgm对了", 124], ["喂喂喂", 119], ["可惜", 118], ["够童", 117], ["运", 117], ["大的要来了", 112], ["烂尾了", 110], ["？？", 109], ["给", 107], ["我并没有这样认为😤……我只是认为我玩的并不是一坨😡……你在我的兜底画面里说我", 106], ["狼神😥😥……我只是🥺🥺……没想到😪😪……会闹成这个样子😭😭", 105], ["尿了没", 104], ["心乱了", 104], ["开盘", 104], ["学", 104], ["饿", 103], ["太变态了", 103], ["好好好", 103], ["军奴", 101], ["少人了", 101], ["🐰：你是谁？ 🫧：我爱你 🐰：龙哥小号？ 🫧：我恨你 🐰：✈，一切都过去了", 100], ["你是？", 98], ["军王", 98], ["坏结局", 96], ["狼宝，我问你点事，你和龙哥说你还有点事的时候，他猜得到你是要出来偷情吗😅", 88], ["我来我来", 88], ["烂片", 88], ["军阀", 87], ["又是类军", 84], ["公式", 83], ["来来来", 83], ["狼神吗", 81], ["战斗", 80], ["开门", 80], ["没爆", 79], ["saber", 79], ["-50", 77], ["战斗爽", 77], ["吓哭了", 74], ["合影", 74], ["-10", 74], ["sc爆了", 73], ["五条悟:傩神我也不是说无量空处就是比伏魔御厨子吊，就是你说的这个凡夫让我很不舒服", 72], ["不如水友", 72], ["325", 70], ["原来主播处理黑化lxt的办法是开一局……nb", 69], ["？？？？", 69], ["牛逼，五条悟遇到宿傩第一句先来句傩神", 69], ["剧如本", 68], ["高高在上", 68], ["呃呃", 68], ["定制", 67], ["开一局", 66], ["少人", 66], ["他在和谁说话[撇嘴]他在和谁说话[撇嘴]他在和谁说话[撇嘴]他在和谁说话[撇嘴]", 66], ["狼宝，我问你点事，你和龙哥说你还有点事的时候，他猜得到你是要出来偷情吗😅😅", 64], ["-100", 63], ["kkrj", 63], ["又是类魂", 62], ["fw", 62], ["哈哈大笑", 62], ["卡卡卡", 62], ["正义必胜", 61], ["狼神？", 59], ["吸血", 59], ["奏戍回战", 58], ["🫧：牛逼，直播两个复奏亲嘴也不和我玩123456，原来爱和恨我都排不到第一", 57], ["-30", 57], ["🤫", 57], ["盗冠", 57], ["听得见", 57], ["满心欢喜准备爽串一个晚上的我 :🤬满心欢喜准备爽串一个晚上的我 :🤬", 56], ["逃兵", 54], ["毒配队", 54], ["1", 54], ["恩人", 54], ["高下立判", 53], ["确实", 53], ["本质军奴", 53], ["法****2：没意思 上****己：没意思 只*****o：没意思", 52], ["哈哈哈", 52], ["超大杯", 52], ["储军", 52], ["没意思", 52], ["爆了爆了", 52], ["没绷住", 52], ["我来", 52], ["哒哒哒哒哒", 52], ["哈哈哈哈", 51], ["借过一下", 51], ["ooc了", 51], ["善意", 51], ["我知道了", 50], ["开战", 49], ["菌哥", 49], ["善意卡怪", 48], ["等了一晚上五条悟大战宿傩，最后端上来两个复奏亲嘴😅", 48], ["不够军", 48], ["包饺子", 48], ["真军", 48], ["斗军阀", 47], ["如果当年🦅角第一句是甲神，现在就不会是这样了...", 46], ["全对", 46], ["ssvgg", 46], ["要打就来要打就来", 45], ["不卡", 45], ["口口众", 45], ["看看人家", 45], ["ok啊狼神", 45], ["血狼勾下身子战斗姿势都摆好了，没想到这个B绕到了血狼屁股商亲血狼屁股", 45], ["善意-1", 44], ["奏术回战", 43], ["狼神我打的帅吗", 43], ["烂完了", 42], ["往里进", 41], ["亲嘴", 40], ["886886", 40], ["智能bgm", 40], ["反观", 40], ["晕晕", 39], ["盗", 39], ["？？？？？", 39], ["很遗憾", 39], ["给给", 39], ["软糯", 39], ["包饺子了", 37], ["神了", 37], ["等死", 37], ["口人众", 37], ["退了084", 36], ["+7", 36], ["本质调情", 36], ["🫧：我也曾想过和你天生一对 ✈：我也曾想过和你天生一对", 36], ["斗军", 36], ["阿米娅", 36], ["不赖", 36], ["老妈到了", 36], ["剧本剧本", 35], ["自己退", 35], ["-2", 35], ["正片开始", 35], ["哈哈哈哈哈", 35], ["sc神了", 35], ["你们觉得呢", 34], ["收到", 34], ["何bgm", 34]];
+var el = document.getElementById('wordcloud-canvas');
+function render() {
+  var w = el.offsetWidth;
+  var h = Math.max(window.innerHeight - el.offsetTop, 600);
+  el.style.height = h + 'px';
+  var maxFreq = wordData[0] ? wordData[0][1] : 1;
+  var maxFontSize = Math.min(w, h) * 3 / 8;
+  WordCloud(el, {
+    list: wordData,
+    weightFactor: function(size) {
+      return Math.max(Math.pow(size / maxFreq, 0.6) * maxFontSize, 10);
+    },
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+    color: function() {
+      var colors = ['#e94560','#48c9b0','#f39c12','#e74c3c','#3498db',
+        '#2ecc71','#9b59b6','#1abc9c','#e67e22','#ff6b6b','#feca57',
+        '#54a0ff','#5f27cd','#01a3a4','#f368e0','#ff9ff3'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    backgroundColor: '#2d2d2d',
+    gridSize: 4,
+    minSize: 2,
+    rotateRatio: 0.4,
+    minRotation: -Math.PI / 4,
+    maxRotation: Math.PI / 4,
+    shape: 'circle',
+    ellipticity: 0.65,
+    shuffle: true,
+    drawOutOfBound: false,
+    shrinkToFit: true
+  });
+}
+render();
+window.addEventListener('resize', function() {
+  clearTimeout(window._wcTimer);
+  window._wcTimer = setTimeout(render, 300);
+});
+</script>
+</body>
+</html>
